@@ -1,4 +1,4 @@
-package com.zoe.commerce;
+package com.zoe.commerce.repositories;
 
 import com.zoe.commerce.models.Client;
 import com.zoe.commerce.models.Product;

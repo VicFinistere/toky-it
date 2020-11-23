@@ -2,6 +2,8 @@ package com.zoe.commerce;
 
 import com.zoe.commerce.models.Product;
 import com.zoe.commerce.models.Stock;
+import com.zoe.commerce.repositories.ProductRepository;
+import com.zoe.commerce.repositories.StockRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -29,7 +31,7 @@ public class CommandsApplication {
     }
 
     @Bean
-    public CommandLineRunner product(ProductRepository repository) {
+    public CommandLineRunner productBean(ProductRepository repository) {
         return (args) -> {
 
             // save a few Products

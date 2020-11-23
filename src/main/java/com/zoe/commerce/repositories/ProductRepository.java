@@ -1,11 +1,11 @@
-package com.zoe.commerce;
+package com.zoe.commerce.repositories;
 
 import com.zoe.commerce.models.Product;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepository extends CrudRepository<Product, Long> {
-    List<Product> findByName(String name);
+    Optional<Product> findByName(String name);
     Product findById(long id);
 }

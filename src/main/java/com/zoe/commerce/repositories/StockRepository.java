@@ -1,4 +1,4 @@
-package com.zoe.commerce;
+package com.zoe.commerce.repositories;
 
 import com.zoe.commerce.models.Stock;
 import org.springframework.data.repository.CrudRepository;
