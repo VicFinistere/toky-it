@@ -1,4 +1,4 @@
-package com.zoe.commerce;
+package com.zoe.commerce.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,10 +35,6 @@ public class Product {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

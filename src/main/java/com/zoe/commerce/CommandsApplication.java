@@ -1,5 +1,7 @@
 package com.zoe.commerce;
 
+import com.zoe.commerce.models.Product;
+import com.zoe.commerce.models.Stock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

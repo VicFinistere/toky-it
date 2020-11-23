@@ -1,5 +1,6 @@
 package com.zoe.commerce;
 
+import com.zoe.commerce.models.Stock;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
