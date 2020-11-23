@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ClientRepository extends CrudRepository<ClientRepository, Long> {
-    List<Product> findByName(String name);
+public interface ClientRepository extends CrudRepository<Client, Long> {
+    List<Client> findByName(String name);
     Client findById(long id);
 }
