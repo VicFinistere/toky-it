@@ -26,4 +26,9 @@ public class CommandesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CommandesApplication.class, args);
 	}
+
+	@Bean
+	public CommandLineRunner demo(CommandeRepository repository) {
+		return (args) -> {};
+	}
 }
