@@ -31,8 +31,11 @@ public class ProductController {
     }
 
     @GetMapping(value="/product/{name}")
-    public Iterable<Product> findProductByName(@PathVariable("name") String name){
-        return this.productRepository.findAll();
+    public String findProductByName(@PathVariable("name") String name){
+        for (Product product : this.productRepository.findAll()) {
+            return product.toString();
+        }
+        return name;
     }
 
 
