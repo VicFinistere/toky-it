@@ -15,6 +15,11 @@ public class Stock {
     protected Stock() {
     }
 
+    public Stock(Product product) {
+        this.product = product;
+        this.quantity = 0;
+    }
+
     public Stock(Product product, float quantity) {
         this.product = product;
         this.quantity = quantity;

@@ -53,7 +53,7 @@ public class CommandsApplication {
 		return (args) -> {
 
 			// fetch all Stock
-			log.info("Product found with findAll():");
+			log.info("Stock found with findAll():");
 			log.info("-------------------------------");
 			for (Stock Stock : repository.findAll()) {
 				log.info(Stock.toString());
