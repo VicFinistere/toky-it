@@ -13,9 +13,9 @@ import java.util.Date;
 
 @Controller
 @SpringBootApplication
-public class CommandsApplication {
+public class CommandesApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(CommandsApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(CommandesApplication.class);
 
 	@RequestMapping("/")
 	@ResponseBody
@@ -24,35 +24,35 @@ public class CommandsApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommandsApplication.class, args);
+		SpringApplication.run(CommandesApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner demo(CommandRepository repository) {
+	public CommandLineRunner demo(CommandeRepository repository) {
 		return (args) -> {
 
 			Date today = new Date();
 
 			// save a few Commands
-			repository.save(new Command(today));
-			repository.save(new Command(today));
-			repository.save(new Command(today, true));
-			repository.save(new Command(today, false));
-			repository.save(new Command(today));
+			repository.save(new Commande(today));
+			repository.save(new Commande(today));
+			repository.save(new Commande(today, true));
+			repository.save(new Commande(today, false));
+			repository.save(new Commande(today));
 
 			// fetch all Commands
 			log.info("Commands found with findAll():");
 			log.info("-------------------------------");
-			for (Command Command : repository.findAll()) {
-				log.info(Command.toString());
+			for (Commande Commande : repository.findAll()) {
+				log.info(Commande.toString());
 			}
 			log.info("");
 
 			// fetch an individual Command by ID
-			Command Command = repository.findById(1L);
+			Commande Commande = repository.findById(1L);
 			log.info("Command found with findById(1L):");
 			log.info("--------------------------------");
-			log.info(Command.toString());
+			log.info(Commande.toString());
 			log.info("");
 
 			// fetch Commands by last name

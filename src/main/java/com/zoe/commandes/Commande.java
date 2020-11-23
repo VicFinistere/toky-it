@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Command {
+public class Commande {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +15,14 @@ public class Command {
     private Date date;
     private boolean checked;
 
-    protected Command(){}
+    protected Commande(){}
 
-    public Command(Date date){
+    public Commande(Date date){
         this.date = date;
         this.checked = false;
     }
 
-    public Command(Date date, Boolean checked){
+    public Commande(Date date, Boolean checked){
         this.date = date;
         this.checked = checked;
     }
