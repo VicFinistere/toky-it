@@ -30,7 +30,8 @@ public class CommandsApplication {
 	@Bean
 	public CommandLineRunner product(ProductRepository repository) {
 		return (args) -> {
-			// save a few Commands
+
+			// save a few Products
 			repository.save(new Product("orange"));
 			repository.save(new Product("rouge"));
 			repository.save(new Product("bleu"));
@@ -48,43 +49,17 @@ public class CommandsApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(CommandRepository repository) {
+	public CommandLineRunner stock(StockRepository repository) {
 		return (args) -> {
 
-			Date today = new Date();
-
-			// save a few Commands
-			repository.save(new Command(today));
-			repository.save(new Command(today));
-			repository.save(new Command(today, true));
-			repository.save(new Command(today, false));
-			repository.save(new Command(today));
-
-			// fetch all Commands
-			log.info("Commands found with findAll():");
+			// fetch all Stock
+			log.info("Product found with findAll():");
 			log.info("-------------------------------");
-			for (Command Command : repository.findAll()) {
-				log.info(Command.toString());
+			for (Stock Stock : repository.findAll()) {
+				log.info(Stock.toString());
 			}
-			log.info("");
-
-			// fetch an individual Command by ID
-			Command Command = repository.findById(1L);
-			log.info("Command found with findById(1L):");
-			log.info("--------------------------------");
-			log.info(Command.toString());
-			log.info("");
-
-			// fetch Commands by last name
-			log.info("Command found with findByLastName('Bauer'):");
-			log.info("--------------------------------------------");
-			repository.findByDate(today).forEach(bauer -> {
-				log.info(bauer.toString());
-			});
-			// for (Command bauer : repository.findByLastName("Bauer")) {
-			//  log.info(bauer.toString());
-			// }
 			log.info("");
 		};
 	}
+
 }
