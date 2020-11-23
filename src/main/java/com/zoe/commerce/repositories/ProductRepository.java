@@ -1,6 +1,6 @@
 package com.zoe.commerce.repositories;
 
-import com.zoe.commerce.models.Product;
+import com.zoe.commerce.model.Product;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

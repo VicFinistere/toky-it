@@ -1,8 +1,7 @@
-package com.zoe.commerce.controllers;
+package com.zoe.commerce.controller;
 
 import com.zoe.commerce.repositories.ProductRepository;
-import com.zoe.commerce.models.Product;
-import org.springframework.stereotype.Controller;
+import com.zoe.commerce.model.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;

@@ -1,6 +1,4 @@
-package com.zoe.commerce.models;
-
-import com.zoe.commerce.models.Product;
+package com.zoe.commerce.model;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.zoe.commerce.models;
+package com.zoe.commerce.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
