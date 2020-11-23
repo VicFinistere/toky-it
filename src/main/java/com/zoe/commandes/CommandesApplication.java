@@ -29,6 +29,12 @@ public class CommandesApplication {
 
 	@Bean
 	public CommandLineRunner demo(CommandeRepository repository) {
-		return (args) -> {};
+		return (args) -> {
+
+			Date today = new Date();
+
+			// save a few Commands
+			repository.save(new Commande(today));
+		};
 	}
 }
