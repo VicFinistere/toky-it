@@ -15,6 +15,11 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
+    @GetMapping(value="/product")
+    public String product() {
+        return "C'est la page des produits";
+    }
+
     @GetMapping(value="/{id}")
     public Optional<Product> findProductById(@PathVariable("id") Long id) {
         return productRepository.findById(id);
