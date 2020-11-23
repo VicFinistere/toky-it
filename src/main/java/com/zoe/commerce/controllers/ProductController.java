@@ -5,6 +5,7 @@ import com.zoe.commerce.models.Product;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Optional;
 
@@ -18,13 +19,15 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public Optional<Product> findProductById(@PathVariable("id") Long id) {
         return productRepository.findById(id);
     }
 
-    @RequestMapping("/{name}")
+    @RequestMapping(value="/{name}", method= RequestMethod.GET)
     public Optional<Product> findProductByName(@PathVariable("name") String name){
         return productRepository.findByName(name);
     }
+
+
 }
