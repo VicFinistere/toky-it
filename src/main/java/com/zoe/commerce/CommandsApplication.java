@@ -51,7 +51,8 @@ public class CommandsApplication {
     public CommandLineRunner stock(StockRepository repository) {
         return (args) -> {
 
-            repository.save(new Stock(new Product("orange"), 14));
+            Product product = new Product("orange");
+            repository.save(new Stock(product, 14));
             repository.save(new Stock(new Product("orange")));
 
 
