@@ -8,7 +8,7 @@ public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Product product;
     float quantity;
 
