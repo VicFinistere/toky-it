@@ -35,6 +35,36 @@ public class CommandesApplication {
 
 			// save a few Commands
 			repository.save(new Commande(today));
+			repository.save(new Commande(today));
+			repository.save(new Commande(today, true));
+			repository.save(new Commande(today, false));
+			repository.save(new Commande(today));
+
+			// fetch all Commands
+			log.info("Commands found with findAll():");
+			log.info("-------------------------------");
+			for (Commande Commande : repository.findAll()) {
+				log.info(Commande.toString());
+			}
+			log.info("");
+
+			// fetch an individual Command by ID
+			Commande Commande = repository.findById(1L);
+			log.info("Command found with findById(1L):");
+			log.info("--------------------------------");
+			log.info(Commande.toString());
+			log.info("");
+
+			// fetch Commands by last name
+			log.info("Command found with findByLastName('Bauer'):");
+			log.info("--------------------------------------------");
+			repository.findByDate(today).forEach(bauer -> {
+				log.info(bauer.toString());
+			});
+			// for (Command bauer : repository.findByLastName("Bauer")) {
+			//  log.info(bauer.toString());
+			// }
+			log.info("");
 		};
 	}
 }
