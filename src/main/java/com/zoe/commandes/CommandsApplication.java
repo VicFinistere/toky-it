@@ -1,4 +1,4 @@
-package com.example.commandes;
+package com.zoe.commandes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
