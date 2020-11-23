@@ -1,4 +1,4 @@
-package com.zoe.commandes;
+package com.zoe.commerce;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Commande {
+public class Command {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +15,14 @@ public class Commande {
     private Date date;
     private boolean checked;
 
-    protected Commande(){}
+    protected Command(){}
 
-    public Commande(Date date){
+    public Command(Date date){
         this.date = date;
         this.checked = false;
     }
 
-    public Commande(Date date, Boolean checked){
+    public Command(Date date, Boolean checked){
         this.date = date;
         this.checked = checked;
     }

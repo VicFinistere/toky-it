@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zoe</groupId>
-    <artifactId>commandes</artifactId>
+    <artifactId>commerce</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>commands</name>
-    <description>Commands project with Spring Boot</description>
+    <description>Commerce project with Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>

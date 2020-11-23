@@ -1,4 +1,4 @@
-package com.zoe.commandes;
+package com.zoe.commerce;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +13,9 @@ import java.util.Date;
 
 @Controller
 @SpringBootApplication
-public class CommandesApplication {
+public class CommandsApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(CommandesApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(CommandsApplication.class);
 
 	@RequestMapping("/")
 	@ResponseBody
@@ -24,35 +24,55 @@ public class CommandesApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(CommandesApplication.class, args);
+		SpringApplication.run(CommandsApplication.class, args);
 	}
 
 	@Bean
-	public CommandLineRunner demo(CommandeRepository repository) {
+	public CommandLineRunner product(ProductRepository repository) {
+		return (args) -> {
+			// save a few Commands
+			repository.save(new Product("orange"));
+			repository.save(new Product("rouge"));
+			repository.save(new Product("bleu"));
+			repository.save(new Product("vert"));
+			repository.save(new Product("rose"));
+
+			// fetch all Commands
+			log.info("Product found with findAll():");
+			log.info("-------------------------------");
+			for (Product Product : repository.findAll()) {
+				log.info(Product.toString());
+			}
+			log.info("");
+		};
+	}
+
+	@Bean
+	public CommandLineRunner demo(CommandRepository repository) {
 		return (args) -> {
 
 			Date today = new Date();
 
 			// save a few Commands
-			repository.save(new Commande(today));
-			repository.save(new Commande(today));
-			repository.save(new Commande(today, true));
-			repository.save(new Commande(today, false));
-			repository.save(new Commande(today));
+			repository.save(new Command(today));
+			repository.save(new Command(today));
+			repository.save(new Command(today, true));
+			repository.save(new Command(today, false));
+			repository.save(new Command(today));
 
 			// fetch all Commands
 			log.info("Commands found with findAll():");
 			log.info("-------------------------------");
-			for (Commande Commande : repository.findAll()) {
-				log.info(Commande.toString());
+			for (Command Command : repository.findAll()) {
+				log.info(Command.toString());
 			}
 			log.info("");
 
 			// fetch an individual Command by ID
-			Commande Commande = repository.findById(1L);
+			Command Command = repository.findById(1L);
 			log.info("Command found with findById(1L):");
 			log.info("--------------------------------");
-			log.info(Commande.toString());
+			log.info(Command.toString());
 			log.info("");
 
 			// fetch Commands by last name
