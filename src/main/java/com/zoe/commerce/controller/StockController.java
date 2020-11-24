@@ -21,7 +21,7 @@ public class StockController {
         return repository.findById(id);
     }
 
-    @GetMapping(value = "/client/{name}")
+    @GetMapping(value = "/stock/{name}")
     public List<Stock> findStockByProduct(@PathVariable("name") String name) {
         return repository.findByProduct_Name(name);
     }
