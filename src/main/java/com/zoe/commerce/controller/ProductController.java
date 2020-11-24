@@ -1,22 +1,19 @@
 package com.zoe.commerce.controller;
 
 import com.zoe.commerce.model.Product;
-import com.zoe.commerce.services.ProductService;
+import com.zoe.commerce.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-@Controller
+@RestController
 public class ProductController {
 
-    private final ProductService productService;
-
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
+    @Autowired
+    private ProductRepository repository;
 
     @GetMapping(value = "/product")
     public String product() {
@@ -28,10 +25,9 @@ public class ProductController {
         return "product : " + id;
     }
 
-    @GetMapping(value="/produit/{id}")
-    public Optional<Product> findProductByName(@PathVariable("id") Long id){
-        return productService.findById(id);
+    @GetMapping(value = "/produit/{id}")
+    public Optional<Product> findProductById(@PathVariable("id") Long id) {
+        return repository.findById(id);
     }
-
 
 }
