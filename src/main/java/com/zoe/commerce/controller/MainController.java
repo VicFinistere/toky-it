@@ -3,24 +3,19 @@ package com.zoe.commerce.controller;
 import com.zoe.commerce.repositories.ClientRepository;
 import com.zoe.commerce.repositories.ProductRepository;
 import com.zoe.commerce.repositories.StockRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MainController {
 
-    private final ProductRepository productRepository;
-    private final StockRepository stockRepository;
-    private final ClientRepository clientRepository;
-
-    public MainController(ProductRepository productRepository,
-                          StockRepository stockRepository,
-                          ClientRepository clientRepository) {
-
-        this.productRepository = productRepository;
-        this.stockRepository = stockRepository;
-        this.clientRepository = clientRepository;
-    }
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private StockRepository stockRepository;
+    @Autowired
+    private ClientRepository clientRepository;
 
     @RequestMapping(value = "/")
     public String index() {
