@@ -1,41 +1,36 @@
 package com.zoe.commerce.controller;
 
-import com.zoe.commerce.repositories.ProductRepository;
 import com.zoe.commerce.model.Product;
-import org.springframework.web.bind.annotation.*;
+import com.zoe.commerce.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-    @GetMapping(value="/product")
+    @GetMapping(value = "/product")
     public String product() {
         return "C'est la page des produits";
     }
 
-    @GetMapping(value="/product/test/{id}")
+    @GetMapping(value = "/product/test/{id}")
     public String findProductById(@PathVariable("id") int id) {
         return "product : " + id;
     }
 
-    @GetMapping(value="/product/{id}")
-    public Optional<Product> findProductById(@PathVariable("id") Long id) {
-        return this.productRepository.findById(id);
-    }
-
-    @GetMapping(value="/product/{name}")
-    public String findProductByName(@PathVariable("name") String name){
-        for (Product product : this.productRepository.findAll()) {
-            return product.toString();
-        }
-        return name;
+    @GetMapping(value="/produit/{id}")
+    public Optional<Product> findProductByName(@PathVariable("id") Long id){
+        return productService.findById(id);
     }
 
 
