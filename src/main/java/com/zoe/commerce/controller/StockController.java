@@ -16,7 +16,7 @@ public class StockController {
     @Autowired
     private StockRepository repository;
 
-    @GetMapping(value = "/stock/{id}")
+    @GetMapping(value = "/stock/id{id}")
     public Optional<Stock> findStockById(@PathVariable("id") Long id) {
         return repository.findById(id);
     }

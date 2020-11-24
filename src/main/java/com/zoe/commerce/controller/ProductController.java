@@ -15,7 +15,7 @@ public class ProductController {
     @Autowired
     private ProductRepository repository;
 
-    @GetMapping(value = "/produit/{id}")
+    @GetMapping(value = "/produit/id{id}")
     public Optional<Product> getProductById(@PathVariable("id") Long id) {
         return repository.findById(id);
     }

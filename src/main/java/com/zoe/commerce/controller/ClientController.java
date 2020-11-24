@@ -16,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientRepository repository;
 
-    @GetMapping(value = "/client/{id}")
+    @GetMapping(value = "/client/id{id}")
     public Optional<Client> findClientById(@PathVariable("id") Long id) {
         return repository.findById(id);
     }
