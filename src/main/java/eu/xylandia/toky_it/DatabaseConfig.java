@@ -1,4 +1,4 @@
-package com.zoe.commerce;
+package eu.xylandia.toky_it;
 
 import com.zaxxer.hikari.*;
 import org.springframework.beans.factory.annotation.Value;

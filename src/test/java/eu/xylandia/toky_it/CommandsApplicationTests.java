@@ -1,4 +1,4 @@
-package com.zoe.commerce;
+package eu.xylandia.toky_it;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

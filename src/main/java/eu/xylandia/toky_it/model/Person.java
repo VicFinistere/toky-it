@@ -1,4 +1,4 @@
-package com.zoe.commerce.model;
+package eu.xylandia.toky_it.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Client {
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,23 +15,23 @@ public class Client {
     private String email;
     private String phone;
 
-    protected Client() {}
+    protected Person() {}
 
-    public Client(String name) {
+    public Person(String name) {
         this.name = name;
         this.address = "undefined address";
         this.email = "undefined email";
         this.phone = "undefined phone number";
     }
 
-    public Client(String name, String address) {
+    public Person(String name, String address) {
         this.name = name;
         this.address = address;
         this.email = "undefined email";
         this.phone = "undefined phone number";
     }
 
-    public Client(String name, String address, String email, String phone) {
+    public Person(String name, String address, String email, String phone) {
         this.name = name;
         this.address = address;
         this.email = email;
