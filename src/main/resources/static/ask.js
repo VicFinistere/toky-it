@@ -51,8 +51,6 @@ function sending_text(isAnswerExpected=true) {
     //Debug
     console.debug("sending_text (messaging.js)");
 
-    clear_text();
-
     //Getting the input value
     var input_text = $("#input_text").val();
 
@@ -87,6 +85,8 @@ function sending_text(isAnswerExpected=true) {
 
         }
     }
+
+    clear_text();
 }
 
 function answer() {
