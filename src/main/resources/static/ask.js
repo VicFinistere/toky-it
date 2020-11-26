@@ -47,7 +47,7 @@ function clear_text() {
     $("#input_text").val("");
 }
 
-function sending_text(isAnswerExpected=true) {
+function sending_text(isAnswerExpected = true) {
     //Debug
     console.debug("sending_text (messaging.js)");
 
@@ -65,7 +65,7 @@ function sending_text(isAnswerExpected=true) {
         var timer = d.toLocaleTimeString();
         $("<small style='font-size:10px;margin:0 auto; margin-left: 65%;'>" + timer + "</small>").appendTo('#chat_area');
         scroll();
-        if(isAnswerExpected) {
+        if (isAnswerExpected) {
             answer();
         }
     }
@@ -144,12 +144,18 @@ function bot_response(response) {
 
 function askRandomly() {
     $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function (data) {
-        $("#input_text").val(data.results[0].question);
-        sending_text(false);
-        scroll();
-        setTimeout(function () {
-            bot_response(data.results[0].correct_answer);
+        if (data.results) {
+            var question = data.results[0].question.replace(/&quot;/g, '\\"');
+            var answer = data.results[0].correct_answer.replace(/&quot;/g, '\\"');
+            ""
+            $("#input_text").val(question);
+            sending_text(false);
             scroll();
-        }, 4000);
+            setTimeout(function () {
+                bot_response(answer);
+                scroll();
+            }, 4000);
+        }
     });
+
 }
