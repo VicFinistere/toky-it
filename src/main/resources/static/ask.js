@@ -171,7 +171,7 @@ function bot_response(response) {
 function askRandomly() {
 
     $.ajax({
-        url: 'test.txt',
+        url: 'https://opentdb.com/api.php?amount=1&category=18&type=multiple',
         type: 'GET',
         contentType: "text/html; charset=UTF-8",
         data: {},
@@ -185,5 +185,4 @@ function askRandomly() {
             }, 4000);
         }
     });
-
 }
