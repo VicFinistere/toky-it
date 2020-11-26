@@ -3,6 +3,7 @@ package eu.xylandia.toky_it.controller;
 import eu.xylandia.toky_it.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,10 +14,13 @@ public class MainController {
     private PersonRepository personRepository;
 
     @RequestMapping("/")
-    public String getIndex() {
+    public String getIndex(Model model) {
+        model.addAttribute("bearer", "${bearer}");
         return "index";
     }
 
     @GetMapping("/answer")
-    public String getAnswer() { return "answer"; }
+    public String getAnswer(Model model) {
+        return "answer";
+    }
 }

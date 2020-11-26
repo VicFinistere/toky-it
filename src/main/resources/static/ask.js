@@ -117,6 +117,27 @@ var answers = [['coucou', 'bonjour', 'salut'], [], []];
 function bot_answering(user_checked_text) {
     //Log
     console.log("bot_answering (bot_answer.js)");
+    var dteNow = new Date();
+    var intYear = dteNow.getFullYear();
+    var intMonth = dteNow.getMonth();
+    var intDay = dteNow.getDay();
+    $.ajax({
+        url: 'https://api.wit.ai/message?v='+ intYear + '' + intMonth + '' + intDay +'&q=' + user_checked_text,
+        type: 'GET',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer ' + "${bearer}" );
+        },
+        data: {},
+        success: function (html_code, status) {
+            console.log("Success in bot answering (" + status + ":" + html_code + ")")
+        },
+        error: function (result, status, error) {
+            console.log("Error in bot answering" + error + "(" + status + ")");
+        },
+        complete: function(result, status){
+            console.log("Result : " + result + '' + result.intents[0].name + "(" + status + ")")
+        },
+    });
 
     // function get_random_answer(user_checked_text) {
     //     for(var i = 0; i < sentences.length; i++){
