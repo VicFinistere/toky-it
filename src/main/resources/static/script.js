@@ -22,9 +22,9 @@ function introduction()
     console.debug("Message introduction (messaging.js)");
     var d = new Date();
     var timer = d.toLocaleTimeString();
-    $('<p>', {class: 'robot_white_msg', text: "Hello !"}).appendTo('#chat_area');
+    $('<p>', {class: 'robot_info_msg', text: "Hello !"}).appendTo('#chat_area');
     $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');
-    $('<p>', {class: 'robot_white_msg', text: "Let's tchat !"}).appendTo('#chat_area');
+    $('<p>', {class: 'robot_info_msg', text: "Any questions ?"}).appendTo('#chat_area');
     $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');
 
     scroll();
@@ -60,7 +60,7 @@ function sending_text()
     if(input_text !== "")
     {
         //We append the input text
-        $('<p>', { class: 'user_blue_msg', text: input_text}).appendTo('#chat_area');
+        $('<p>', { class: 'user_bubble_msg', text: input_text}).appendTo('#chat_area');
         var d = new Date();
         var timer = d.toLocaleTimeString();
         $("<small style='font-size:10px;margin:0 auto; margin-left: 65%;'>"+timer+"</small>").appendTo('#chat_area');
@@ -94,7 +94,7 @@ function answer()
     //Debug
     console.debug("answer (messaging.js))");
 
-    var user_input = $('#chat_area').children('p.user_blue_msg').last();
+    var user_input = $('#chat_area').children('p.user_bubble_msg').last();
     var user_text = user_input.html();
     var user_checked_text = user_text.toLowerCase();
 
@@ -105,8 +105,8 @@ function answer()
 
 }
 
-var user_input = $('#chat_area').children('p.user_blue_msg').last();
-var robot_input = $('#chat_area').children('p.robot_white_msg').last();
+var user_input = $('#chat_area').children('p.user_bubble_msg').last();
+var robot_input = $('#chat_area').children('p.robot_info_msg').last();
 
 var sentences = ['bonjour', 'salut', 'coucou'];
 var answers = [['coucou', 'bonjour', 'salut'], [], []];
@@ -136,7 +136,7 @@ function bot_answering(user_checked_text)
 
 function bot_response(response){
     if(user_input.css('color') !== 'rgb(230, 230, 230)'){
-        $('<p>', {class: 'robot_white_msg', text:response}).appendTo('#chat_area');
+        $('<p>', {class: 'robot_info_msg', text:response}).appendTo('#chat_area');
         var d = new Date();
         var timer = d.toLocaleTimeString();
         $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');

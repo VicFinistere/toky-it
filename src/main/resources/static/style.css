@@ -60,11 +60,11 @@ body {
 
 }
 
-p.robot_white_msg{
+p.robot_info_msg{
 
-    background: lightgray;
+    background: #17a2b8;
 
-    color:black;
+    color:white;
 
     padding:20px;
 
@@ -79,11 +79,11 @@ p.robot_white_msg{
     margin:0px ;
 }
 
-p.user_blue_msg{
+p.user_bubble_msg{
 
-    background: deepskyblue;
+    background: lightgray;
 
-    color:white;
+    color:black;
 
     padding:20px;
 
