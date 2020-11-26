@@ -115,23 +115,7 @@ function bot_answering(user_checked_text)
 {
     //Log
     console.log("bot_answering (bot_answer.js)");
-    $.getJSON($SCRIPT_ROOT + '/get_dialog', {input:user_checked_text},
-        function (response)
-        {
-            //Debug
-            console.debug("Using mail personnal API");
-            if (response)
-            {
-                bot_response(response);
-                scroll();
 
-            }
-            else
-            {
-                bot_response(user_checked_text);
-                scroll();
-            }
-        });
     // function get_random_answer(user_checked_text) {
     //     for(var i = 0; i < sentences.length; i++){
     //         if(sentences[i] === user_checked_text ){
@@ -146,12 +130,7 @@ function bot_answering(user_checked_text)
     //     }
     // }
 
-    if (true === user_checked_text.indexOf(sentences) !== -1) {
-        var random_answer = get_random_answer(user_checked_text);
-        bot_response(random_answer);
-    } else {
-        bot_response('...');
-    }
+
     scroll();
 }
 
