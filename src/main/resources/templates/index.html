@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,65 +22,27 @@
     <meta name="theme-color" content="#563d7c">-->
 
 
-    <style>
-        @media (min-width: 768px) {
-
-        }
-
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            display: -ms-flexbox;
-            display: flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: #f5f5f5;
-        }
-
-        .form-signin {
-            width: 100%;
-            max-width: 330px;
-            padding: 15px;
-            margin: auto;
-        }
-
-        .form-signin .form-control {
-            position: relative;
-            box-sizing: border-box;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        .form-signin .form-control:focus {
-            z-index: 2;
-        }
-        .form-signin input[type="email"] {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-        .form-signin input[type="password"] {
-            margin-bottom: 10px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-    </style>
+    <link href="/style.css">
 </head>
 <body class="text-center">
 <form class="form-signin">
 
     <!-- <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-    <h1 class="h3 mb-3 font-weight-normal" title="Ask your question, it's supposed to be related to IT of course!">Ask your question</h1>
-    <p title="Write INFO or CODE before your question to categorize it !">Please prefix your questions</p>
+    <h1 class="h3 mb-3 font-weight-normal"
+        title="Ask your question, it's supposed to be related to IT of course!">
+        Ask your question
+        <i class="far fa-keyboard"></i>
+    </h1>
+    <p title="Write INFO or CODE before your question to categorize it !">
+        Please prefix your questions
+    </p>
     <ul class="text-justify">
-        <li title="All about computers, technologies and digital world !">INFO (computers informations)</li>
-        <li title="Only for coding answers, you will have the dev community answering this !">CODE (coding informations)</li>
+        <li title="All about computers, technologies and digital world !">
+            INFO (computers informations)
+        </li>
+        <li title="Only for coding answers, you will have the dev community answering this !">
+            CODE (coding informations)
+        </li>
     </ul>
     <textarea id="chat"
               name="chat-textarea"
