@@ -48,13 +48,11 @@ body {
 
 #text_area{
 
-    background-color:rgb(235, 235, 228);
+    background-color: white;
 
     overflow: scroll;
 
     height: 250px;
-
-    width: 80%;
 
     padding:15px;
 
