@@ -169,13 +169,12 @@ function bot_response(response) {
 }
 
 function askRandomly() {
-
     $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function (data) {
-        $("#input_text").val(data.text);
+        $("#input_text").val(data.results[0].question);
         sending_text();
         scroll();
         setTimeout(function () {
-            bot_response(data.text);
+            bot_response(data.results[0].correct_answer);
             scroll();
         }, 4000);
     });
