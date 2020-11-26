@@ -153,6 +153,7 @@ function askRandomly() {
         scroll();
         setTimeout(function () {
             bot_response(data.results[0].correct_answer);
-        }, 2000);
+        }, 4000);
+        scroll();
     });
 }
