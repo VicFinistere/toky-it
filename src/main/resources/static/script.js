@@ -1,5 +1,5 @@
 /* Event listener : Getting answer using button */
-$(function() { $('#tchat_button').on('click', function() { sending_text(); }); });
+$(function() { $('#chat_button').on('click', function() { sending_text(); }); });
 
 /* Event listener : Getting answer pressing enter */
 $(function () { $(document).keypress(function (e) { if (e.which === 13){ sending_text(); }}); });
@@ -12,8 +12,8 @@ function scroll()
     //Debug
     console.debug("Scrolling down the conversation (messaging.js)");
 
-    var tchat_area = document.getElementById('tchat_area');
-    tchat_area.scrollTop = tchat_area.scrollHeight;
+    var chat_area = document.getElementById('chat_area');
+    chat_area.scrollTop = chat_area.scrollHeight;
 }
 
 function introduction()
@@ -22,10 +22,10 @@ function introduction()
     console.debug("Message introduction (messaging.js)");
     var d = new Date();
     var timer = d.toLocaleTimeString();
-    $('<p>', {class: 'robot_white_msg', text: "Hello !"}).appendTo('#tchat_area');
-    $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#tchat_area');
-    $('<p>', {class: 'robot_white_msg', text: "Let's tchat !"}).appendTo('#tchat_area');
-    $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#tchat_area');
+    $('<p>', {class: 'robot_white_msg', text: "Hello !"}).appendTo('#chat_area');
+    $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');
+    $('<p>', {class: 'robot_white_msg', text: "Let's tchat !"}).appendTo('#chat_area');
+    $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');
 
     scroll();
 }
@@ -40,13 +40,6 @@ function clear_text()
         //Debug
         console.debug("Text_error is cleared (messaging.js)");
         $("#text_error").empty();
-    }
-
-    if ($("#text_place_area").not(':empty'))
-    {
-        //Debug
-        console.debug("Text_place is cleared (messaging.js)");
-        $("#text_place_area").empty();
     }
 }
 
@@ -67,10 +60,10 @@ function sending_text()
     if(input_text !== "")
     {
         //We append the input text
-        $('<p>', { class: 'user_blue_msg', text: input_text}).appendTo('#tchat_area');
+        $('<p>', { class: 'user_blue_msg', text: input_text}).appendTo('#chat_area');
         var d = new Date();
         var timer = d.toLocaleTimeString();
-        $("<small style='font-size:10px;margin:0 auto; margin-left: 65%;'>"+timer+"</small>").appendTo('#tchat_area');
+        $("<small style='font-size:10px;margin:0 auto; margin-left: 65%;'>"+timer+"</small>").appendTo('#chat_area');
         scroll();
         answer();
     }
@@ -101,7 +94,7 @@ function answer()
     //Debug
     console.debug("answer (messaging.js))");
 
-    var user_input = $('#tchat_area').children('p.user_blue_msg').last();
+    var user_input = $('#chat_area').children('p.user_blue_msg').last();
     var user_text = user_input.html();
     var user_checked_text = user_text.toLowerCase();
 
@@ -112,8 +105,8 @@ function answer()
 
 }
 
-var user_input = $('#tchat_area').children('p.user_blue_msg').last();
-var robot_input = $('#tchat_area').children('p.robot_white_msg').last();
+var user_input = $('#chat_area').children('p.user_blue_msg').last();
+var robot_input = $('#chat_area').children('p.robot_white_msg').last();
 
 var sentences = ['bonjour', 'salut', 'coucou'];
 var answers = [['coucou', 'bonjour', 'salut'], [], []];
@@ -164,10 +157,10 @@ function bot_answering(user_checked_text)
 
 function bot_response(response){
     if(user_input.css('color') !== 'rgb(230, 230, 230)'){
-        $('<p>', {class: 'robot_white_msg', text:response}).appendTo('#tchat_area');
+        $('<p>', {class: 'robot_white_msg', text:response}).appendTo('#chat_area');
         var d = new Date();
         var timer = d.toLocaleTimeString();
-        $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#tchat_area');
+        $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>"+timer+"</small></p>").appendTo('#chat_area');
         user_input.css('color', 'rgb(230, 230, 230)');
     }
 }
