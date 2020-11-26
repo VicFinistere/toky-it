@@ -121,8 +121,9 @@ function bot_answering(user_checked_text) {
     var intYear = dteNow.getFullYear();
     var intMonth = dteNow.getMonth();
     var intDay = dteNow.getDay();
+    console.log(intYear, intMonth, intDay);
     $.ajax({
-        url: 'https://api.wit.ai/message?v='+ intYear + '' + intMonth + '' + intDay +'&q=' + user_checked_text,
+        url: 'https://api.wit.ai/message?v='+ 2020 + '' + 11 + '' + 26 +'&q=' + user_checked_text,
         type: 'GET',
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + "${bearer}" );
