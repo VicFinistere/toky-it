@@ -14,7 +14,7 @@ public class MainController {
     @Autowired
     private PersonRepository personRepository;
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String getIndex() {
         return "ask";
     }
