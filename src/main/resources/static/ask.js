@@ -44,11 +44,7 @@ function clear_text() {
     //Debug
     console.debug("clear_text (messaging.js)");
 
-    if ($("#text_error").not(':empty')) {
-        //Debug
-        console.debug("Text_error is cleared (messaging.js)");
-        $("#text_error").empty();
-    }
+    $("#input_text").val("");
 }
 
 function sending_text(isAnswerExpected=true) {
@@ -89,8 +85,6 @@ function sending_text(isAnswerExpected=true) {
             //Debug
             console.debug("Giving empty input text error(messaging.js)");
 
-            //Say it!
-            $("#text_error").html(text);
         }
     }
 }
@@ -118,7 +112,7 @@ function bot_answering(user_checked_text) {
     //Log
     console.log("bot_answering (bot_answer.js)");
 
-    bot_response(user_checked_text + "... Yeah (I don't know yet how to answer that more cleverly)");
+    bot_response("Someone is coming to answer your question...otherwise try to google it !");
     scroll();
     // function get_random_answer(user_checked_text) {
     //     for(var i = 0; i < sentences.length; i++){
