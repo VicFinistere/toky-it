@@ -145,8 +145,8 @@ function bot_response(response) {
 function askRandomly() {
     $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function (data) {
         if (data.results) {
-            var question = data.results[0].question.replace(/&quot;/g, '\\"');
-            var answer = data.results[0].correct_answer.replace(/&quot;/g, '\\"');
+            var question = data.results[0].question.replace(/&quot;/g, '\"').replace("&#039", "'");
+            var answer = data.results[0].correct_answer.replace(/&quot;/g, '\\"').replace("&#039", "'");
             ""
             $("#input_text").val(question);
             sending_text(false);
