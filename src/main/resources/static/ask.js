@@ -111,35 +111,13 @@ function answer() {
 var user_input = $('#chat_area').children('p.user_bubble_msg').last();
 var robot_input = $('#chat_area').children('p.robot_info_msg').last();
 
-var sentences = ['bonjour', 'salut', 'coucou'];
-var answers = [['coucou', 'bonjour', 'salut'], [], []];
 
 function bot_answering(user_checked_text) {
     //Log
     console.log("bot_answering (bot_answer.js)");
-    var dteNow = new Date();
-    var intYear = dteNow.getFullYear();
-    var intMonth = dteNow.getMonth();
-    var intDay = dteNow.getDay();
-    console.log(intYear, intMonth, intDay);
-    $.ajax({
-        url: 'https://api.wit.ai/message?v='+ 2020 + '' + 11 + '' + 26 +'&q=' + user_checked_text,
-        type: 'GET',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + "${bearer}" );
-        },
-        data: {},
-        success: function (html_code, status) {
-            console.log("Success in bot answering (" + status + ":" + html_code + ")")
-        },
-        error: function (result, status, error) {
-            console.log("Error in bot answering" + error + "(" + status + ")");
-        },
-        complete: function(result, status){
-            console.log("Result : " + result + '' + result.intents[0].name + "(" + status + ")")
-        },
-    });
 
+    bot_response(user_checked_text + "... Yeah (I don't know yet how to answer that more cleverly)");
+    scroll();
     // function get_random_answer(user_checked_text) {
     //     for(var i = 0; i < sentences.length; i++){
     //         if(sentences[i] === user_checked_text ){
