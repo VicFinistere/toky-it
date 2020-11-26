@@ -91,16 +91,6 @@ p.robot_white_msg{
     margin:0px ;
 }
 
-
-p.item{
-    color:black;
-    padding:10px;
-    border-radius: 25px;
-    width: auto;
-    height:auto;
-    float:left;
-}
-
 p.user_blue_msg{
 
     background: deepskyblue;
@@ -119,4 +109,8 @@ p.user_blue_msg{
 
     margin:0px ;
 
+}
+
+input{
+    background-color: white;
 }
