@@ -123,10 +123,10 @@ function bot_answering(user_checked_text) {
     var intDay = dteNow.getDay();
     console.log(intYear, intMonth, intDay);
     $.ajax({
-        url: 'https://api.wit.ai/message?v=' + 2020 + '' + 11 + '' + 26 + '&q=' + user_checked_text,
+        url: 'https://api.wit.ai/message?v='+ 2020 + '' + 11 + '' + 26 +'&q=' + user_checked_text,
         type: 'GET',
         beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer ' + "${bearer}");
+            xhr.setRequestHeader('Authorization', 'Bearer ' + "${bearer}" );
         },
         data: {},
         success: function (html_code, status) {
@@ -135,7 +135,7 @@ function bot_answering(user_checked_text) {
         error: function (result, status, error) {
             console.log("Error in bot answering" + error + "(" + status + ")");
         },
-        complete: function (result, status) {
+        complete: function(result, status){
             console.log("Result : " + result + '' + result.intents[0].name + "(" + status + ")")
         },
     });
@@ -170,19 +170,13 @@ function bot_response(response) {
 
 function askRandomly() {
 
-    $.ajax({
-        url: 'https://opentdb.com/api.php?amount=1&category=18&type=multiple',
-        type: 'GET',
-        contentType: "text/html; charset=UTF-8",
-        data: {},
-        success: function (data) {
-            $("#input_text").val(data.results[0].question);
-            sending_text();
+    $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function (data) {
+        $("#input_text").val(data.text);
+        sending_text();
+        scroll();
+        setTimeout(function () {
+            bot_response(data.text);
             scroll();
-            setTimeout(function () {
-                bot_response(data.results[0].correct_answer);
-                scroll();
-            }, 4000);
-        }
+        }, 4000);
     });
 }
