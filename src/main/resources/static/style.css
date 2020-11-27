@@ -76,6 +76,22 @@ body {
 
 }
 
+p.info_questions {
+
+    background: #17a2b8;
+
+    color: white;
+
+    padding: 20px;
+
+    border-radius: 25px;
+
+    width: auto;
+
+    height: auto;
+
+    margin: 10px;
+}
 
 p.robot_info_msg {
 
@@ -92,8 +108,6 @@ p.robot_info_msg {
     width: auto;
 
     height: auto;
-
-    margin: 0px;
 }
 
 p.user_bubble_msg {
@@ -111,8 +125,6 @@ p.user_bubble_msg {
     width: auto;
 
     height: auto;
-
-    margin: 0px;
 
 }
 
