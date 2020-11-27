@@ -8,7 +8,8 @@ function get_questions() {
             let questions_area = $("#questions_area");
             let already_asked_questions = questions_area.val();
             if(!already_asked_questions.includes(question)) {
-                questions_area.val(already_asked_questions + "\n" + question);
+                $('<p>', {class: 'robot_info_msg', text: question}).appendTo('#chat_area');
+
             }
         });
     });

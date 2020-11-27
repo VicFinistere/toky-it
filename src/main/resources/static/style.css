@@ -35,34 +35,22 @@ body {
 .form-signin .form-control:focus {
     z-index: 2;
 }
+
 .form-signin input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+
 .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-#chat_area{
+#chat_area {
 
-    background-color:rgb(235, 235, 228);
-
-    overflow: scroll;
-
-    height: 250px;
-
-    width: 100%;
-
-    padding:15px;
-
-}
-
-#questions_area{
-
-    background-color:rgb(235, 235, 228);
+    background-color: rgb(235, 235, 228);
 
     overflow: scroll;
 
@@ -70,26 +58,32 @@ body {
 
     width: 100%;
 
-    padding:15px;
+    padding: 15px;
 
 }
 
-#questions_area *{
-    text-decoration: underline;
-    color: black;
+#questions_area {
+
+    background-color: rgb(235, 235, 228);
+
+    overflow: scroll;
+
+    height: 250px;
+
+    width: 100%;
+
+    padding: 15px;
+
 }
 
-#questions_area *:hover{
-    color: #17a2b8;
-}
 
-p.robot_info_msg{
+p.robot_info_msg {
 
     background: #17a2b8;
 
-    color:white;
+    color: white;
 
-    padding:20px;
+    padding: 20px;
 
     margin-right: 20%;
 
@@ -97,18 +91,18 @@ p.robot_info_msg{
 
     width: auto;
 
-    height:auto;
+    height: auto;
 
-    margin:0px ;
+    margin: 0px;
 }
 
-p.user_bubble_msg{
+p.user_bubble_msg {
 
     background: lightgray;
 
-    color:black;
+    color: black;
 
-    padding:20px;
+    padding: 20px;
 
     margin-left: 20%;
 
@@ -116,12 +110,12 @@ p.user_bubble_msg{
 
     width: auto;
 
-    height:auto;
+    height: auto;
 
-    margin:0px ;
+    margin: 0px;
 
 }
 
-input{
+input {
     background-color: white;
 }
