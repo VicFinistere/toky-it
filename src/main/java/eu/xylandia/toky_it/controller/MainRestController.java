@@ -11,6 +11,13 @@ public class MainRestController {
 
     @PostMapping("/getInput")
     public String getInput(@RequestParam Optional<String> user_input) {
-        return "User input is : " + user_input;
+
+        String msg = "User input : ";
+
+        if(user_input. isPresent()) {
+            msg += user_input;
+        }
+
+        return msg;
     }
 }
