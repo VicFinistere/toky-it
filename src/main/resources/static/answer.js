@@ -3,6 +3,7 @@ $(function () {
     $(document).on('click', '.info_questions', function (e) {
         let txt = $(e.target).text();
         console.log(txt);
+        $("#chat_area").hide();
     });
 });
 
