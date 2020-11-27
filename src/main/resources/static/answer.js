@@ -1,5 +1,5 @@
 $(function () {
-    $('.info_questions').click(function(e) {
+    $('.info_questions').on('click', function (e) {
         var txt = $(e.target).text();
         console.log(txt);
     });
