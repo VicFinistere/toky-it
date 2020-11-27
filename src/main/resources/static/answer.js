@@ -6,8 +6,8 @@ function get_questions() {
 
         $.each(questions, function (i, question) {
             let questions_area = $("#questions-area");
-            let questions = questions_area.val();
-            if(!questions.includes(question)) {
+            let already_asked_questions = questions_area.val();
+            if(!already_asked_questions.includes(question)) {
                 questions_area.val(questions + "\n" + question);
             }
         });
