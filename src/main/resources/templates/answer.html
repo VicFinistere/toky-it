@@ -36,9 +36,19 @@
     <div id="questions_area" title="Toky IT community questions"></div>
     <div id="question_area" title="Toky IT community question">
         <textarea id="selected_question" disabled></textarea>
-        <input type="text" id="answer">
-        <input type="submit" onClick="answerQuestion()" value="Submit">
-        <input type="submit" onclick="openAllQuestions()" value="Close">
+        <input type="text" id="answer" class="form-control">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button"
+                    class="btn btn-info"
+                    onClick="answerQuestion()">
+                Submit
+            </button>
+            <button type="button"
+                    class="btn btn-info"
+                    onclick="openAllQuestions()">
+                Close
+            </button>
+        </div>
     </div>
 
     <p class="mt-5 mb-3 text-muted"
