@@ -1,9 +1,25 @@
+function answerQuestion(){
+    console.log("You have answered : " + $("#answer").val() ) ;
+}
+
+function openOneQuestion(e, txt){
+    $("#selected_question").val(txt);
+    $("#questions_area").hide();
+    $("#question_area").show();
+}
+
+function openAllQuestions(){
+    $("#question_area").hide();
+    $("#questions_area").show();
+}
+
 $(function () {
+
+    openAllQuestions();
 
     $(document).on('click', '.info_questions', function (e) {
         let txt = $(e.target).text();
-        console.log(txt);
-        $("#questions_area").hide();
+        openOneQuestion(e, txt);
     });
 });
 

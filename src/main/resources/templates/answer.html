@@ -32,9 +32,15 @@
         title="You will be able to help the IT community by answering questions !">
         Help the <span title="Information Technology">IT</span> community !
     </h1>
-    <p>Select a question</p>
     <input type="hidden" id="questions_list">
-    <div id="questions_area" title="Toky IT community chat"></div>
+    <div id="questions_area" title="Toky IT community questions">
+        <textarea id="selected_question" disabled>
+        <input type="text" id="answer">
+        <input type="submit" onClick="answerQuestion()" value="Submit">
+        <input type="submit" onclick="openAllQuestions()" value="Close">
+    </div>
+    <div id="question_area" title="Toky IT community question"></div>
+
     <p class="mt-5 mb-3 text-muted"
        title="This is not a brand, just the name of the project that gives a wink to Toky Woky !">Toky IT &copy;
         2020</p>
