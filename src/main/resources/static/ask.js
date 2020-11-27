@@ -117,7 +117,7 @@ function bot_answering(user_checked_text) {
         type: "POST",
         contentType: "application/json",
         url: "/getInput",
-        data: JSON.stringify(user_checked_text),
+        data: {'user_input': JSON.stringify(user_checked_text)},
         dataType: 'json',
         cache: false,
         timeout: 600000,
