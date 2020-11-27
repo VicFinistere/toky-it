@@ -178,12 +178,3 @@ function askRandomly() {
 
 }
 
-$(function () {
-    $.get( "/getQuestions", function( questions ) {
-        console.log(questions);
-
-        $.each(questions, function (i, question){
-            console.log("Question : " + question);
-        });
-    });
-});
