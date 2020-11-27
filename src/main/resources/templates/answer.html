@@ -35,20 +35,18 @@
     <input type="hidden" id="questions_list">
     <div id="questions_area" title="Toky IT community questions"></div>
     <div id="question_area" title="Toky IT community question">
-        <textarea id="selected_question" disabled></textarea>
+        <textarea id="selected_question" class="form-control" disabled></textarea>
         <input type="text" id="answer" class="form-control">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button"
-                    class="btn btn-info"
-                    onClick="answerQuestion()">
-                Submit
-            </button>
-            <button type="button"
-                    class="btn btn-info"
-                    onclick="openAllQuestions()">
-                Close
-            </button>
-        </div>
+        <button type="button"
+                class="btn btn-info"
+                onClick="answerQuestion()">
+            Submit
+        </button>
+        <small>
+            <a id="random-question" href="#" class="text-info" onclick="openAllQuestions()">
+                Get back to all the questions
+            </a>
+        </small>
     </div>
 
     <p class="mt-5 mb-3 text-muted"
