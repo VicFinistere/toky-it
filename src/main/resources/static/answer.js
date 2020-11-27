@@ -1,6 +1,7 @@
 $(function () {
-    $('.info_questions').on('click', function (e) {
-        var txt = $(e.target).text();
+
+    $(document).on('click', '.info_questions', function (e) {
+        let txt = $(e.target).text();
         console.log(txt);
     });
 });
@@ -12,7 +13,7 @@ function get_questions() {
         $.each(questions, function (i, question) {
             var question_list = $("#questions_list");
             let already_asked_questions = question_list.val();
-            if(!already_asked_questions.includes(question)) {
+            if (!already_asked_questions.includes(question)) {
                 question_list.val(already_asked_questions + "\n" + question);
                 $('<p>', {class: 'info_questions', text: question}).appendTo('#questions_area');
                 console.log("New question to be posted !");
