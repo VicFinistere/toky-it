@@ -8,7 +8,7 @@ function get_questions() {
             let questions_area = $("#questions-area");
             let already_asked_questions = questions_area.val();
             if(!already_asked_questions.includes(question)) {
-                questions_area.val(questions + "\n" + question);
+                questions_area.val(already_asked_questions + "\n" + question);
             }
         });
     });
