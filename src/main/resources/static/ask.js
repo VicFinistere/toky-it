@@ -1,7 +1,8 @@
 /* Event listener : Getting answer using button */
 $(function () {
-    $('#chat_button').on('click', function () {
+    $('#chat_button').on('click', function (e) {
         sending_text();
+        e.preventDefault();
     });
 });
 
@@ -10,6 +11,7 @@ $(function () {
     $(document).keypress(function (e) {
         if (e.which === 13) {
             sending_text();
+            e.preventDefault();
         }
     });
 });
