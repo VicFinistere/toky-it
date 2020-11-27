@@ -11,9 +11,6 @@ import java.util.Optional;
 @Controller
 public class MainController {
 
-    @Autowired
-    private PersonRepository personRepository;
-
     @RequestMapping("/")
     public String getIndex(Model model) {
         model.addAttribute("bearer", "${bearer}");
