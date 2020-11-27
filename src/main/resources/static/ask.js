@@ -180,8 +180,10 @@ function askRandomly() {
 
 $(function () {
     $.get( "/getQuestions", function( questions ) {
-        for(let question in questions){
+        console.log(questions);
+
+        $.each(questions, function (i, question){
             console.log("Question : " + question);
-        }
+        });
     });
 });
