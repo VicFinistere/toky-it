@@ -95,7 +95,6 @@ function answer() {
     //Debug
     console.debug("answer (messaging.js))");
 
-    var user_input = $('#chat_area').children('p.user_bubble_msg').last();
     var user_text = user_input.html();
     var user_checked_text = user_text.toLowerCase();
 
@@ -167,16 +166,23 @@ function askRandomly() {
     $.get("https://opentdb.com/api.php?amount=1&category=18&type=multiple", function (data) {
         if (data.results) {
             var question = data.results[0].question.replace(/&quot;/g, '\"').replace(/&#039/g, "'");
-            var answer = data.results[0].correct_answer.replace(/&quot;/g, '\\"').replace(/&#039/g, "'");
-            ""
+            var correct_answer = data.results[0].correct_answer.replace(/&quot;/g, '\\"').replace(/&#039/g, "'");
             $("#input_text").val(question);
             sending_text(false);
             scroll();
             setTimeout(function () {
-                bot_response(answer);
+                bot_response(correct_answer);
                 scroll();
             }, 4000);
         }
     });
 
 }
+
+$(function () {
+    $.get( "/getQuestions", function( questions ) {
+        for(let question in questions){
+            console.log("Question : " + question);
+        }
+    });
+});
