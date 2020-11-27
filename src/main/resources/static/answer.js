@@ -32,7 +32,7 @@ function get_questions() {
             let already_asked_questions = question_list.val();
             if (!already_asked_questions.includes(question)) {
                 question_list.val(already_asked_questions + "\n" + question);
-                $('<p>', {class: 'info_questions', text: question}).appendTo('#questions_area');
+                $('<p>', {class: 'info_questions', text: question}).appendTo('#questions_textarea');
                 console.log("New question to be posted !");
             }
         });
