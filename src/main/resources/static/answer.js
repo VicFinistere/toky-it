@@ -5,11 +5,12 @@ function get_questions() {
         console.log(questions);
 
         $.each(questions, function (i, question) {
-            let questions_area = $("#questions_area");
-            let already_asked_questions = questions_area.val();
+            var question_list = $("#questions_list");
+            let already_asked_questions = question_list.val();
             if(!already_asked_questions.includes(question)) {
+                question_list.val(already_asked_questions + "\n" + question);
                 $('<p>', {class: 'robot_info_msg', text: question}).appendTo('#questions_area');
-
+                console.log("New question to be posted !");
             }
         });
     });
