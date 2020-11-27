@@ -94,8 +94,7 @@ function sending_text(isAnswerExpected = true) {
 function answer() {
     //Debug
     console.debug("answer (messaging.js))");
-
-    var user_text = user_input.html();
+    var user_text = $('#chat_area').children('p.user_bubble_msg').last().html();
     var user_checked_text = user_text.toLowerCase();
 
     bot_answering(user_checked_text);
