@@ -115,10 +115,8 @@ function bot_answering(user_checked_text) {
 
     $.ajax({
         type: "POST",
-        contentType: "application/json",
         url: "/getInput",
-        data: {'user_input': JSON.stringify(user_checked_text)},
-        dataType: 'json',
+        data: {'user_input': user_checked_text},
         cache: false,
         timeout: 600000,
         success: function (data, status) {
