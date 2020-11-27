@@ -60,6 +60,29 @@ body {
 
 }
 
+#questions_area{
+
+    background-color:rgb(235, 235, 228);
+
+    overflow: scroll;
+
+    height: 250px;
+
+    width: 100%;
+
+    padding:15px;
+
+}
+
+#questions_area *{
+    text-decoration: underline;
+    color: black;
+}
+
+#questions_area *:hover{
+    color: #17a2b8;
+}
+
 p.robot_info_msg{
 
     background: #17a2b8;
