@@ -1,6 +1,8 @@
-$('.info_questions').click(function(e) {
-    var txt = $(e.target).text();
-    console.log(txt);
+$(function () {
+    $('.info_questions').click(function(e) {
+        var txt = $(e.target).text();
+        console.log(txt);
+    });
 });
 
 function get_questions() {
