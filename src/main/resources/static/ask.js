@@ -111,6 +111,27 @@ var robot_input = $('#chat_area').children('p.robot_info_msg').last();
 function bot_answering(user_checked_text) {
     //Log
     console.log("bot_answering (bot_answer.js)");
+    console.log("New question : " + user_checked_text);
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/getInput",
+        data: JSON.stringify(user_checked_text),
+        dataType: 'json',
+        cache: false,
+        timeout: 600000,
+        success: function (data, status) {
+
+            console.log("SUCCESS ( " + status + " ) : ", data);
+
+        },
+        error: function (e) {
+
+            console.log("ERROR : ", e);
+
+        }
+    });
 
     bot_response("Someone is coming to answer your question...otherwise try to google it !");
     scroll();
