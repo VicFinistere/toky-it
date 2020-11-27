@@ -5,7 +5,7 @@ function get_questions() {
         console.log(questions);
 
         $.each(questions, function (i, question) {
-            let questions_area = $("#questions-area");
+            let questions_area = $("#chat_area");
             let already_asked_questions = questions_area.val();
             if(!already_asked_questions.includes(question)) {
                 questions_area.val(already_asked_questions + "\n" + question);
