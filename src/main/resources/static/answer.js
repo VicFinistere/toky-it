@@ -1,4 +1,7 @@
-
+$('.info_questions').click(function(e) {
+    var txt = $(e.target).text();
+    console.log(txt);
+});
 
 function get_questions() {
     $.get("/getQuestions", function (questions) {
