@@ -64,12 +64,6 @@ body {
 
 #questions_textarea {
 
-    background-color: rgb(235, 235, 228);
-
-    overflow: scroll;
-
-    height: 250px;
-
     width: 100%;
 
     padding: 15px;
