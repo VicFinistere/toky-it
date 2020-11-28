@@ -10,7 +10,7 @@ function getAnswers(idQuestion) {
         timeout: 600000,
         success: function (question, status) {
 
-            console.log("SUCCESS ( " + status + " ) : ", data);
+            console.log("SUCCESS ( " + status + " ) : ", question);
             $.each(question.answer, function (i, answer) {
 
                 if (!$("#selected_question_answers").val().includes(answer)) {
