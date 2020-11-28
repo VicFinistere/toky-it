@@ -39,15 +39,11 @@ public class MainRestController {
     }
 
     @PostMapping("/setAnswer")
-    public void setAnswer(@RequestParam String selectedQuestionId, @RequestParam String givenAnswer) {
+    public void setAnswer(@RequestParam long selectedQuestionId, @RequestParam String givenAnswer) {
 
-        Optional<Question> question = Optional.ofNullable(questionRepository.findById(Long.parseLong(selectedQuestionId)));
-        if (question.isPresent()) {
-            Question fetchedQuestion = question.get();
-            fetchedQuestion.getAnswer().add(new Answer(new Person("John Doe"), givenAnswer));
-            questionRepository.save(fetchedQuestion);
-        }
-
+        Question question = questionRepository.findById(selectedQuestionId);
+        question.getAnswer().add(new Answer(new Person("John Doe"), givenAnswer));
+        questionRepository.save(question);
     }
 
     @GetMapping("/getQuestions")
