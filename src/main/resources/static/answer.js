@@ -11,12 +11,12 @@ function getAnswers(idQuestion) {
         success: function (question, status) {
 
             console.log("SUCCESS ( " + status + " ) : ", question);
-            $.each(question.answer, function (i, answer) {
+            $.each(question.answer, function (i, current_answer) {
 
-                if (!$("#selected_question_answers").val().includes(answer)) {
+                if (!$("#selected_question_answers").val().includes(current_answer.answer)) {
                     $('<p>', {
                         class: "answer",
-                        text: answer
+                        text: current_answer.answer
                     }).appendTo('#selected_question_answers');
                 }
             });
