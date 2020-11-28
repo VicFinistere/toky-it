@@ -5,7 +5,7 @@ function answerQuestion() {
     let givenAnswer = inputForAnswer.val();
     let selectedQuestion = inputForQuestion.val();
     let selectedQuestionId = inputForQuestion.attr("class").replaceAll("info_questions ", "");
-    console.log("You have answered : " + givenAnswer + "(" + selectedQuestion + ")");
+    console.log("Answering : " + givenAnswer + "(" + selectedQuestion + "#" + selectedQuestionId + ")");
     $.ajax({
         type: "POST",
         url: "/setAnswer",
