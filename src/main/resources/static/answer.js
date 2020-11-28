@@ -1,3 +1,31 @@
+function getAnswers(idQuestion) {
+    $.ajax({
+        type: "POST",
+        url: "/getQuestion",
+        data: {'idQuestion': idQuestion},
+        cache: false,
+        timeout: 600000,
+        success: function (question, status) {
+
+            console.log("SUCCESS ( " + status + " ) : ", data);
+            $.each(question.answer, function (i, answer) {
+
+                if (!$("#selected_question_answers").val().includes(answer)) {
+                    $('<p>', {
+                        class: "answer",
+                        text: answer
+                    }).appendTo('#selected_question_answers');
+                }
+            });
+        },
+        error: function (e) {
+
+            console.log("ERROR : ", e);
+
+        }
+    });
+}
+
 function answerQuestion() {
 
     let inputForQuestion = $("#selected_question");
@@ -37,6 +65,8 @@ function openOneQuestion(e, idQuestion, txt) {
     $("#selected_question_id").val(idQuestion);
     $("#questions_area").hide();
     $("#question_area").show();
+    getAnswers(idQuestion);
+    setInterval(get_answers(idQuestion), 10000);
 }
 
 function openAllQuestions() {
