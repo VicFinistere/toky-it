@@ -56,9 +56,8 @@ public class MainRestController {
     }
 
     @PostMapping("/getQuestion")
-    public Question getQuestion(@RequestParam Optional<String> idQuestion) {
-        long id = Long.parseLong(String.valueOf(idQuestion));
-        return questionRepository.findById(id);
+    public Question getQuestion(@RequestParam long idQuestion) {
+        return questionRepository.findById(idQuestion);
     }
 
 }
