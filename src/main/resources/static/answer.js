@@ -4,7 +4,7 @@ function answerQuestion() {
     let inputForAnswer = $("#answer");
     let givenAnswer = inputForAnswer.val();
     let selectedQuestion = inputForQuestion.val();
-    let selectedQuestionId = inputForQuestion.attr("class");
+    let selectedQuestionId = inputForQuestion.attr("class").replaceAll("info_questions ", "");
     console.log("You have answered : " + givenAnswer + "(" + selectedQuestion + ")");
     $.ajax({
         type: "POST",
@@ -62,7 +62,7 @@ function get_questions() {
             if (!already_asked_questions.includes(question_object.question)) {
                 question_list.val(already_asked_questions + "\n" + question_object.question);
                 $('<p>', {
-                    class: 'info_questions' + question_object.id,
+                    class: 'info_questions ' + question_object.id,
                     text: question_object.question
                 }).appendTo('#questions_textarea');
                 console.log("New question to be posted !");
