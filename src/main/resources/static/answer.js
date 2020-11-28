@@ -4,7 +4,8 @@ function answerQuestion() {
     let inputForAnswer = $("#answer");
     let givenAnswer = inputForAnswer.val();
     let selectedQuestion = inputForQuestion.val();
-    let selectedQuestionId = inputForQuestion.attr("class").replaceAll("info_questions ", "");
+    let selectedQuestionId = $("#selected_question_id").val();
+
     console.log("Answering : " + givenAnswer + "(" + selectedQuestion + "#" + selectedQuestionId + ")");
     $.ajax({
         type: "POST",
@@ -31,8 +32,9 @@ function answerQuestion() {
 
 }
 
-function openOneQuestion(e, txt) {
+function openOneQuestion(e, idQuestion, txt) {
     $("#selected_question").val(txt);
+    $("#selected_question_id").val(idQuestion);
     $("#questions_area").hide();
     $("#question_area").show();
 }
@@ -48,7 +50,8 @@ $(function () {
 
     $(document).on('click', '.info_questions', function (e) {
         let txt = $(e.target).text();
-        openOneQuestion(e, txt);
+        let idQuestion =$(e.target).attr("class").replaceAll("info_questions ", "");
+        openOneQuestion(e, idQuestion, txt);
     });
 });
 
