@@ -12,12 +12,10 @@ function getAnswers(idQuestion) {
 
             console.log("SUCCESS ( " + status + " ) : ", question);
             $.each(question.answer, function (i, current_answer) {
-
-                if (!$("#selected_question_answers").val().includes(current_answer.answer)) {
-                    $('<p>', {
-                        class: "answer",
-                        text: current_answer.answer
-                    }).appendTo('#selected_question_answers');
+            let answers_list = $("#selected_question_answers");
+                if (!answers_list.val().includes(current_answer.answer)) {
+                    let current_value = answers_list.val();
+                    answers_list.val(current_value +  ","  + current_answer.answer);
                 }
             });
         },
