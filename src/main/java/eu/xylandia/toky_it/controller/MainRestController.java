@@ -1,5 +1,6 @@
 package eu.xylandia.toky_it.controller;
 
+import eu.xylandia.toky_it.model.Answer;
 import eu.xylandia.toky_it.model.Person;
 import eu.xylandia.toky_it.model.Question;
 import eu.xylandia.toky_it.repositories.PersonRepository;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,8 +27,10 @@ public class MainRestController {
 
         String msg = "User input : ";
 
-        if(userInput. isPresent()) {
+        if (userInput.isPresent()) {
             msg += userInput.get();
+
+            // TODO : Handle question's author
             questionRepository.save(new Question(new Person("JohnDoe"), userInput.get()));
         }
 
@@ -37,13 +38,21 @@ public class MainRestController {
         return msg;
     }
 
-    @GetMapping("/getQuestions")
-    public List<String> getQuestions() {
-        Iterable<Question> q = questionRepository.findAll();
-        List<String> questions = new ArrayList<>();
-        for (Question question : q) {
-            questions.add(question.getQuestion());
+    @PostMapping("/setAnswer")
+    public void setAnswer(@RequestParam Long selectedQuestionId, @RequestParam String givenAnswer) {
+
+        Optional<Question> question = questionRepository.findById(selectedQuestionId);
+        if (question.isPresent()) {
+            Question fetchedQuestion = question.get();
+            fetchedQuestion.getAnswer().add(new Answer(new Person("John Doe"), givenAnswer));
+            questionRepository.save(fetchedQuestion);
         }
-        return questions;
+
     }
+
+    @GetMapping("/getQuestions")
+    public Iterable<Question> getQuestions() {
+        return questionRepository.findAll();
+    }
+
 }
