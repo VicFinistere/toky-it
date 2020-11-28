@@ -1,4 +1,7 @@
 function getAnswers(idQuestion) {
+
+    console.log(idQuestion);
+
     $.ajax({
         type: "POST",
         url: "/getQuestion",
@@ -66,7 +69,7 @@ function openOneQuestion(e, idQuestion, txt) {
     $("#questions_area").hide();
     $("#question_area").show();
     getAnswers(idQuestion);
-    setInterval(get_answers(idQuestion), 10000);
+    setInterval(getAnswers(idQuestion), 10000);
 }
 
 function openAllQuestions() {
