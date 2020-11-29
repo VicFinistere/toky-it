@@ -12,11 +12,11 @@ function getAnswers(idQuestion) {
 
             console.log("SUCCESS ( " + status + " ) : ", question);
             $.each(question.answer, function (i, current_answer) {
-            let answers_list = $("#selected_question_answers");
+                let answers_list = $("#selected_question_answers");
                 if (!answers_list.val().includes(current_answer.answer)) {
                     let current_value = answers_list.val();
-                    if(current_value){
-                        answers_list.val(current_value +  "\n"  + current_answer.answer);
+                    if (current_value) {
+                        answers_list.val(current_value + "\n" + current_answer.answer);
                     } else {
                         answers_list.val(current_answer.answer);
                     }
@@ -87,10 +87,22 @@ $(function () {
 
     $(document).on('click', '.info_questions', function (e) {
         let txt = $(e.target).text();
-        let idQuestion =$(e.target).attr("class").replaceAll("info_questions ", "");
+        let idQuestion = $(e.target).attr("class").replaceAll("info_questions ", "");
         openOneQuestion(e, idQuestion, txt);
     });
 });
+
+function isASpam(question_object) {
+    let status = ""
+    if(question_object.answer) {
+        $.each(question_object.answer, function (i, current_answer) {
+            if (current_answer.answer.includes("not an IT question")) {
+                status = "spam";
+            }
+        });
+    }
+    return status
+}
 
 function get_questions() {
     $.get("/getQuestions", function (questions) {
@@ -99,13 +111,64 @@ function get_questions() {
         $.each(questions, function (i, question_object) {
             var question_list = $("#questions_list");
             let already_asked_questions = question_list.val();
+            let filter = $("#questions_filter").val();
             if (!already_asked_questions.includes(question_object.question)) {
-                question_list.val(already_asked_questions + "\n" + question_object.question);
-                $('<p>', {
-                    class: 'info_questions ' + question_object.id,
-                    text: question_object.question
-                }).appendTo('#questions_textarea');
-                console.log("New question to be posted !");
+
+                // SPAM
+                if(isASpam(question_object) && filter === "spam"){
+
+                    question_list.val(already_asked_questions + "\n" + question_object.question);
+                    $('<p>', {
+                        class: 'info_questions ' + question_object.id,
+                        text: question_object.question
+                    }).appendTo('#questions_textarea');
+                }
+
+                // Already answered
+                else if(question_object.answer && filter === "answered"){
+
+                    question_list.val(already_asked_questions + "\n" + question_object.question);
+                    $('<p>', {
+                        class: 'info_questions ' + question_object.id,
+                        text: question_object.question
+                    }).appendTo('#questions_textarea');
+
+                }
+
+                // CODE
+                else if (question_object.question.includes("CODE")
+                    && filter === "code") {
+
+                    question_list.val(already_asked_questions + "\n" + question_object.question);
+                    $('<p>', {
+                        class: 'info_questions ' + question_object.id,
+                        text: question_object.question
+                    }).appendTo('#questions_textarea');
+
+                }
+
+                // INFO
+                else if (question_object.question.includes("INFO")
+                    && filter === "info") {
+
+                    question_list.val(already_asked_questions + "\n" + question_object.question);
+                    $('<p>', {
+                        class: 'info_questions ' + question_object.id,
+                        text: question_object.question
+                    }).appendTo('#questions_textarea');
+                }
+
+                // NOT PREFIXED
+                else if ((!question_object.question.includes("CODE")
+                    && !question_object.question.includes("INFO"))
+                    && filter === "it")
+
+                    question_list.val(already_asked_questions + "\n" + question_object.question);
+                    $('<p>', {
+                        class: 'info_questions ' + question_object.id,
+                        text: question_object.question
+                    }).appendTo('#questions_textarea');
+
             }
         });
     });
