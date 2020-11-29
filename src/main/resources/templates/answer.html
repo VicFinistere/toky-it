@@ -36,6 +36,25 @@
     <input type="hidden" id="questions_list">
     <div id="questions_area">
     <p>Select a question</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-default" id="questions_of_code">CODE</button>
+        <button type="button" class="btn btn-default" id="question_of_info">INFO</button>
+        <button type="button" class="btn btn-default" id="question_of_it">Not prefixed</button>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1"
+                    type="button"
+                    class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                Other
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#" id="question_of_it_answered">Already answered</a>
+                <a class="dropdown-item" href="#" id="question_of_none">Not an IT question</a>
+            </div>
+        </div>
+    </div>
     <div id="questions_textarea" title="Toky IT community questions"></div>
     </div>
     <div id="question_area" title="Toky IT community question">
