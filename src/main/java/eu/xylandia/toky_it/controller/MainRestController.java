@@ -62,7 +62,7 @@ public class MainRestController {
 
     @GetMapping("/getQuestionsWithFilter")
     public Iterable<Question> getQuestionsWithFilter(@RequestParam String filter) {
-        List<Question> result;
+        Iterable<Question> result;
 
         // code
         if (filter.contains("code")) {
