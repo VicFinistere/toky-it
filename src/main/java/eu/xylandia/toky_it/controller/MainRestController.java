@@ -48,7 +48,7 @@ public class MainRestController {
     public void setAnswer(@RequestParam long selectedQuestionId, @RequestParam String givenAnswer) {
 
         Question question = questionRepository.findById(selectedQuestionId);
-        question.getAnswer().add(new Answer(new Person("John Doe"), givenAnswer));
+        question.getAnswers().add(new Answer(new Person("John Doe"), givenAnswer));
         questionRepository.save(question);
     }
 
@@ -78,7 +78,7 @@ public class MainRestController {
             questions.addAll(questionRepository.findQuestionByQuestionContaining("Technologies"));
 
             for(Question question: questions){
-                if(isAnsweredQuestion(question)){
+                if(question.isAnsweredQuestion()){
                     answeredQuestions.add(question);
                 }
 
@@ -92,7 +92,7 @@ public class MainRestController {
             List<Question> answeredQuestions = new ArrayList<>();
             List<Question> questions = questionRepository.findQuestionByQuestionNotContainingAndQuestionNotContaining("Code", "Technologies");
             for(Question question: questions){
-                if(isAnsweredQuestion(question)){
+                if(question.isAnsweredQuestion()){
                     answeredQuestions.add(question);
                 }
 
@@ -112,18 +112,6 @@ public class MainRestController {
         }
 
         return questionRepository.findAll();
-    }
-
-    private boolean isAnsweredQuestion(Question question) {
-        boolean result = false;
-        List<Answer> answers = question.getAnswer();
-        for (Answer answer : answers) {
-            if (answer.getAnswer() != null) {
-                result = true;
-                break;
-            }
-        }
-        return result;
     }
 
 

@@ -15,20 +15,20 @@ public class Question {
     private Person person;
     private String question;
     @OneToMany(cascade = {CascadeType.ALL})
-    private List<Answer> answer;
+    private List<Answer> answers;
 
     protected Question() {}
 
     public Question(Person person, String question) {
         this.person = person;
         this.question = question;
-        this.answer = new ArrayList<>();
+        this.answers = new ArrayList<>();
     }
 
     public Question(Person person, String question, List<Answer> answer) {
         this.person = person;
         this.question = question;
-        this.answer = answer;
+        this.answers = answer;
     }
 
     public Long getId() {
@@ -51,12 +51,22 @@ public class Question {
         this.question = question;
     }
 
-    public List<Answer> getAnswer() {
-        return answer;
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAnswer(List<Answer> answer) {
-        this.answer = answer;
+    public void setAnswer(List<Answer> answers) {
+        this.answers = answers;
     }
 
+    public boolean isAnsweredQuestion() {
+        boolean result = false;
+        for (Answer answer : answers) {
+            if (answer.getAnswer() != null) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
 }
