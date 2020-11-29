@@ -63,6 +63,7 @@ function answerQuestion() {
     });
 
     inputForAnswer.val("");
+    openAllQuestions();
 
 }
 
