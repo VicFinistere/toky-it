@@ -123,7 +123,7 @@ public class MainRestController {
 
     @PostMapping("/removeQuestion")
     public void removeQuestion(@RequestParam String question) {
-        Question questionToDelete = questionRepository.findByQuestion(question).get(0);
+        Question questionToDelete = questionRepository.findByQuestionMessage(question).get(0);
         questionRepository.delete(questionToDelete);
     }
 }

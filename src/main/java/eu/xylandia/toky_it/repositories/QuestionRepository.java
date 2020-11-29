@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface QuestionRepository extends CrudRepository<Question, Long> {
     List<Question> findByPerson(String name);
-    List<Question> findByQuestion(String question);
+    List<Question> findByQuestionMessage(String question);
     Question findById(long id);
     List<Question> findQuestionByQuestionMessageContaining(String string);
     List<Question> findQuestionByQuestionMessageNotContaining(String filter);
