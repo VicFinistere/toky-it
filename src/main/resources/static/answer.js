@@ -126,6 +126,11 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 function get_questions() {
     let filter = $("#questions_filter").val();
     if (filter) {
+        if (filter === "info") {
+            $.get("/getInfoQuestions", function (data) {
+                console.log(data);
+            });
+        }
         $.ajax({
             url: "/getQuestionsWithFilter",
             data: {'filter': filter},

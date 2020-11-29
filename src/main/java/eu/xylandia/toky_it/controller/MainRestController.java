@@ -60,6 +60,12 @@ public class MainRestController {
         return questionRepository.findAll();
     }
 
+    @GetMapping("/getInfoQuestions")
+    public Iterable<Question> getInfoQuestions()
+    {
+        return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
+    }
+
     @GetMapping("/getQuestionsWithFilter")
     public Iterable<Question> getQuestionsWithFilter(@RequestParam String filter) {
 
