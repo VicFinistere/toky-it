@@ -94,7 +94,7 @@ $(function () {
 
 function isASpam(question_object) {
     let status = ""
-    if(question_object.answer) {
+    if (question_object.answer) {
         $.each(question_object.answer, function (i, current_answer) {
             if (current_answer.answer.includes("not an IT question")) {
                 status = "spam";
@@ -102,6 +102,19 @@ function isASpam(question_object) {
         });
     }
     return status
+}
+
+function reloadQuestions(filter){
+    $("#questions_textarea").val("");
+    $("#questions_filter").val(filter);
+    get_questions();
+}
+function insertQuestion(question_list, already_asked_questions, question_object) {
+    question_list.val(already_asked_questions + "\n" + question_object.question);
+    $('<p>', {
+        class: 'info_questions ' + question_object.id,
+        text: question_object.question
+    }).appendTo('#questions_textarea');
 }
 
 function get_questions() {
@@ -115,23 +128,20 @@ function get_questions() {
             if (!already_asked_questions.includes(question_object.question)) {
 
                 // SPAM
-                if(isASpam(question_object) && filter === "spam"){
-
-                    question_list.val(already_asked_questions + "\n" + question_object.question);
-                    $('<p>', {
-                        class: 'info_questions ' + question_object.id,
-                        text: question_object.question
-                    }).appendTo('#questions_textarea');
+                if (isASpam(question_object) && filter === "spam") {
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
                 }
 
                 // Already answered
-                else if(question_object.answer && filter === "answered"){
+                else if (question_object.answer && filter === "answered") {
 
-                    question_list.val(already_asked_questions + "\n" + question_object.question);
-                    $('<p>', {
-                        class: 'info_questions ' + question_object.id,
-                        text: question_object.question
-                    }).appendTo('#questions_textarea');
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
 
                 }
 
@@ -139,11 +149,11 @@ function get_questions() {
                 else if (question_object.question.includes("CODE")
                     && filter === "code") {
 
-                    question_list.val(already_asked_questions + "\n" + question_object.question);
-                    $('<p>', {
-                        class: 'info_questions ' + question_object.id,
-                        text: question_object.question
-                    }).appendTo('#questions_textarea');
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
+
 
                 }
 
@@ -151,11 +161,11 @@ function get_questions() {
                 else if (question_object.question.includes("INFO")
                     && filter === "info") {
 
-                    question_list.val(already_asked_questions + "\n" + question_object.question);
-                    $('<p>', {
-                        class: 'info_questions ' + question_object.id,
-                        text: question_object.question
-                    }).appendTo('#questions_textarea');
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
+
                 }
 
                 // NOT PREFIXED
@@ -163,11 +173,10 @@ function get_questions() {
                     && !question_object.question.includes("INFO"))
                     && filter === "it")
 
-                    question_list.val(already_asked_questions + "\n" + question_object.question);
-                    $('<p>', {
-                        class: 'info_questions ' + question_object.id,
-                        text: question_object.question
-                    }).appendTo('#questions_textarea');
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
 
             }
         });

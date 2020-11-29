@@ -41,14 +41,14 @@
     <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button"
                 class="btn btn-default"
-                onclick=$("#questions_filter").val("code")>CODE</button>
-        <button type="button" 
+                onclick="reloadQuestions('code')">CODE</button>
+        <button type="button"
                 class="btn btn-default"
-                onclick=$("#questions_filter").val("info")>INFO</button>
+                onclick="reloadQuestions('info')">INFO</button>
         <button type="button"
                 class="btn btn-default"
                 id="question_of_it"
-                onclick=$("#questions_filter").val("it")>Unprefixed</button>
+                onclick="reloadQuestions('it')">Unprefixed</button>
         <div class="btn-group" role="group">
             <button id="btnGroupDrop1"
                     type="button"
@@ -61,10 +61,10 @@
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <a class="dropdown-item"
                    href="#"
-                   onclick=$("#questions_filter").val("answered")>Already answered</a>
+                   onclick="reloadQuestions('answered')">Already answered</a>
                 <a class="dropdown-item"
                    href="#"
-                   onclick=$("#questions_filter").val("spam")>Not an IT question</a>
+                   onclick="reloadQuestions('spam')">Not an IT question</a>
             </div>
         </div>
     </div>
