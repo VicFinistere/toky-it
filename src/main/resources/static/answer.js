@@ -93,18 +93,19 @@ $(function () {
 });
 
 function isASpam(question_object) {
-    let status = ""
+    let status = "";
     if (question_object.answer) {
         $.each(question_object.answer, function (i, current_answer) {
             if (current_answer.answer.includes("not an IT question")) {
                 status = "spam";
+                return status;
             }
         });
     }
     return status
 }
 
-function reloadQuestions(filter){
+    function reloadQuestions(filter){
     $("#questions_textarea").val("");
     $("#questions_list").val("");
     $('#questions_textarea').load(location.href +  ' #questions_textarea');
@@ -130,7 +131,7 @@ function get_questions() {
             if (!already_asked_questions.includes(question_object.question)) {
 
                 // SPAM
-                if (isASpam(question_object) && filter === "spam") {
+                if (isASpam(question_object) === 'spam' && filter === "spam") {
                     insertQuestion(
                         question_list,
                         already_asked_questions,
@@ -138,7 +139,7 @@ function get_questions() {
                 }
 
                 // Already answered
-                else if (question_object.answer && filter === "answered") {
+                else if (question_object.answer !== null && filter === "answered") {
 
                     insertQuestion(
                         question_list,
