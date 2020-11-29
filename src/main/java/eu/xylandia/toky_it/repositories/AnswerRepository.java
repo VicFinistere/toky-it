@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AnswerRepository extends CrudRepository<Answer, Long> {
 
-    Iterable<Answer> findByAnswerIsNotContaining(String message);
+    Iterable<Answer> findByAnswerContaining(String filter);
 }
