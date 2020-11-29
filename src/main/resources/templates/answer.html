@@ -38,8 +38,8 @@
 
     <div id="questions_area">
     <div class="btn-group form-control" role="group" aria-label="Basic example">
-        <button onclick="window.history.pushState('', 'Toky IT', '/');" type="button" class="btn btn-info">Ask</button>
-        <button onclick="window.history.pushState('', 'Toky IT (Answer)', '/answer');" type="button" class="btn btn-info active">Answer</button>
+        <button onclick="$(location).attr('href','/');" type="button" class="btn btn-info">Ask</button>
+        <button onclick="$(location).attr('href','/answer');" type="button" class="btn btn-info active">Answer</button>
     </div>
     <p>Select a question</p>
     <div class="btn-group btn-default" role="group" aria-label="Basic example">
