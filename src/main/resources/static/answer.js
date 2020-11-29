@@ -78,7 +78,7 @@ function openOneQuestion(e, idQuestion, txt) {
 }
 
 function openAllQuestions() {
-    $('#questions_textarea').load(location.href +  ' #questions_textarea');
+    $('#questions_textarea').load(location.href + ' #questions_textarea');
     $("#question_area").hide();
     $("#questions_area").show();
 }
@@ -107,13 +107,14 @@ function isASpam(question_object) {
     return status
 }
 
-    function reloadQuestions(filter){
+function reloadQuestions(filter) {
     $("#questions_textarea").val("");
     $("#questions_list").val("");
-    $('#questions_textarea').load(location.href +  ' #questions_textarea');
+    $('#questions_textarea').load(location.href + ' #questions_textarea');
     $("#questions_filter").val(filter);
     get_questions();
 }
+
 function insertQuestion(question_list, already_asked_questions, question_object) {
     question_list.val(already_asked_questions + "\n" + question_object.question);
     $('<p>', {
@@ -124,28 +125,38 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 
 function get_questions() {
     let filter = $("#questions_filter").val();
-    $.get("/getQuestionsWithFilter",
-        {filter: filter},
-        function (questions) {
-        console.log("Questions for " + filter + " : " + questions);
+    $.ajax({
+        url: "/getQuestionsWithFilter",
+        data: {'filter': filter},
+        success: function (questions, status) {
 
-        $.each(questions, function (i, question_object) {
-            console.log("Question object " + question_object);
-            var question_list = $("#questions_list");
-            let already_asked_questions = question_list.val();
 
-            // Filter
-            if (!already_asked_questions.includes(question_object.question)) {
+            console.log("Questions for " + filter + " : " + questions);
 
-                insertQuestion(
-                    question_list,
-                    already_asked_questions,
-                    question_object);
+            $.each(questions, function (i, question_object) {
+                console.log("Question object " + question_object);
+                var question_list = $("#questions_list");
+                let already_asked_questions = question_list.val();
 
-            }
-        });
+                // Filter
+                if (!already_asked_questions.includes(question_object.question)) {
+
+                    insertQuestion(
+                        question_list,
+                        already_asked_questions,
+                        question_object);
+
+                }
+            });
+        }, error: function (e) {
+
+            console.log("ERROR : ", e);
+
+        }
     });
+
 }
+
 
 get_questions();
 setInterval(get_questions, 10000);
