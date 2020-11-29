@@ -62,6 +62,7 @@ function answerQuestion() {
 }
 
 function openOneQuestion(e, idQuestion, txt) {
+    $("#selected_question_answers").val("");
     $("#selected_question").val(txt);
     $("#selected_question_id").val(idQuestion);
     $("#questions_area").hide();
