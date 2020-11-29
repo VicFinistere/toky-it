@@ -129,10 +129,10 @@ function get_questions() {
             let already_asked_questions = question_list.val();
             let filter = $("#questions_filter").val();
 
-            // SPAM
+            // Filter
             if (!already_asked_questions.includes(question_object.question)
                 && (filter === "spam" && isASpam(question_object) === 'spam'
-                || filter === "answered" && typeof(question_object.answer.answer) !== 'undefined'
+                || filter === "answered" && typeof question_object.answer.answer !== 'undefined'
                 || filter === "code" && question_object.question.includes("CODE")
                 || filter === "info" && question_object.question.includes("INFO")
                 || filter === "it" && (!question_object.question.includes("CODE") && !question_object.question.includes("INFO")))) {
