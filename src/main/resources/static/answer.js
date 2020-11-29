@@ -128,58 +128,19 @@ function get_questions() {
             var question_list = $("#questions_list");
             let already_asked_questions = question_list.val();
             let filter = $("#questions_filter").val();
-            if (!already_asked_questions.includes(question_object.question)) {
 
-                // SPAM
-                if (isASpam(question_object) === 'spam' && filter === "spam") {
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
-                }
+            // SPAM
+            if (!already_asked_questions.includes(question_object.question)
+                && (filter === "spam" && isASpam(question_object) === 'spam'
+                || filter === "answered" && !question_object.answer.answer.isEmptyObject()
+                || filter === "code" && question_object.question.includes("CODE")
+                || filter === "info" && question_object.question.includes("INFO")
+                || filter === "it" && (!question_object.question.includes("CODE") && !question_object.question.includes("INFO")))) {
 
-                // Already answered
-                else if (question_object.answer.answer !== null && filter === "answered") {
-
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
-
-                }
-
-                // CODE
-                else if (question_object.question.includes("CODE")
-                    && filter === "code") {
-
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
-
-
-                }
-
-                // INFO
-                else if (question_object.question.includes("INFO")
-                    && filter === "info") {
-
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
-
-                }
-
-                // NOT PREFIXED
-                else if ((!question_object.question.includes("CODE")
-                    && !question_object.question.includes("INFO"))
-                    && filter === "it")
-
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
+                insertQuestion(
+                    question_list,
+                    already_asked_questions,
+                    question_object);
 
             }
         });
