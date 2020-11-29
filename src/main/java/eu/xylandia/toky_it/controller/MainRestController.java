@@ -62,16 +62,15 @@ public class MainRestController {
 
     @GetMapping("/getQuestionsWithFilter")
     public Iterable<Question> getQuestionsWithFilter(@RequestParam String filter) {
-        Iterable<Question> result;
 
         // code
         if (filter.contains("code")) {
-            result = questionRepository.findQuestionByQuestionMessageContaining(CODE);
+            return questionRepository.findQuestionByQuestionMessageContaining(CODE);
         }
 
         // info
         else if (filter.contains("info")) {
-            result = questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
+            return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
         }
 
         // answeredIT
@@ -88,7 +87,7 @@ public class MainRestController {
 
             }
 
-            result = answeredQuestions;
+            return answeredQuestions;
         }
 
         // answered
@@ -102,7 +101,7 @@ public class MainRestController {
                 }
 
             }
-            result = answeredQuestions;
+            return answeredQuestions;
         }
 
         // spam
@@ -112,13 +111,12 @@ public class MainRestController {
             for (Answer answers : answersList) {
                 spamQuestions.addAll(questionRepository.findQuestionByAnswers(answers));
             }
-            result = spamQuestions;
+            return spamQuestions;
 
         } else {
-            result = questionRepository.findAll();
+            return questionRepository.findAll();
         }
 
-        return result;
     }
 
 
