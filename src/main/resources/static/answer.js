@@ -106,6 +106,7 @@ function isASpam(question_object) {
 
 function reloadQuestions(filter){
     $("#questions_textarea").val("");
+    $("#questions_list").val("");
     $('#questions_textarea').load(location.href +  ' #questions_textarea');
     $("#questions_filter").val(filter);
     get_questions();
