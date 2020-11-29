@@ -15,7 +15,12 @@ function getAnswers(idQuestion) {
             let answers_list = $("#selected_question_answers");
                 if (!answers_list.val().includes(current_answer.answer)) {
                     let current_value = answers_list.val();
-                    answers_list.val(current_value +  ","  + current_answer.answer);
+                    if(current_value){
+                        answers_list.val(current_value +  "\n"  + current_answer.answer);
+                    } else {
+                        answers_list.val(current_answer.answer);
+                    }
+
                 }
             });
         },
