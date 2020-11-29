@@ -102,9 +102,12 @@ public class MainRestController {
 
         // spam
         else if(filter.contains("spam")){
-
+            List<Question> spamQuestions = new ArrayList<>();
             Iterable<Answer> answers = answerRepository.findByAnswerIsNotContaining("not an IT question");
-            return questionRepository.findQuestionByAnswer(answers);
+            for(Answer answer: answers){
+                spamQuestions.addAll(questionRepository.findQuestionByAnswer(answer));
+            }
+            return spamQuestions;
 
         }
 
