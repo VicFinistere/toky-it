@@ -56,4 +56,8 @@ public class MainRestController {
         return questionRepository.findById(idQuestion);
     }
 
+    @PostMapping("/removeQuestion")
+    public void removeQuestion(@RequestParam String question) {
+        questionRepository.delete((Question) questionRepository.findByQuestion(question));
+    }
 }
