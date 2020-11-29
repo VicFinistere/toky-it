@@ -123,22 +123,18 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 }
 
 function get_questions() {
-    $.get("/getQuestions", function (questions) {
+    let theme = $("#questions_filter").val();
+    $.get("/getQuestionsWithFilter",
+        {theme: theme},
+        function (questions) {
         console.log(questions);
 
         $.each(questions, function (i, question_object) {
             var question_list = $("#questions_list");
             let already_asked_questions = question_list.val();
-            let filter = $("#questions_filter").val();
 
             // Filter
-            if (!already_asked_questions.includes(question_object.question)
-                && (filter === "spam" && isASpam(question_object) === 'spam'
-                || filter === "answered" && typeof question_object.answer[0] !== 'undefined'
-                || filter === "answeredIT" && !(isASpam(question_object) === 'spam') && typeof question_object.answer[0] !== 'undefined'
-                || filter === "code" && typeof question_object.answer[0] === 'undefined' && question_object.question.includes("CODE")
-                || filter === "info" && typeof question_object.answer[0] !== 'undefined' && question_object.question.includes("INFO")
-                || filter === "it" && !(isASpam(question_object) === 'spam') && (!question_object.question.includes("Code") && !question_object.question.includes("Technologies")))) {
+            if (!already_asked_questions.includes(question_object.question)) {
 
                 insertQuestion(
                     question_list,
