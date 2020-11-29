@@ -123,9 +123,9 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 }
 
 function get_questions() {
-    let theme = $("#questions_filter").val();
+    let filter = $("#questions_filter").val();
     $.get("/getQuestionsWithFilter",
-        {theme: theme},
+        {filter: filter},
         function (questions) {
         console.log(questions);
 
