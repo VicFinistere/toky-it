@@ -3,7 +3,6 @@ package eu.xylandia.toky_it.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Entity(name="question")
 public class Question {
@@ -13,22 +12,22 @@ public class Question {
     private Long id;
     @OneToOne(cascade = {CascadeType.ALL})
     private Person person;
-    private String question;
+    private String questionMessage;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Answer> answers;
 
     protected Question() {}
 
-    public Question(Person person, String question) {
+    public Question(Person person, String questionMessage) {
         this.person = person;
-        this.question = question;
+        this.questionMessage = questionMessage;
         this.answers = new ArrayList<>();
     }
 
-    public Question(Person person, String question, List<Answer> answer) {
+    public Question(Person person, String questionMessage, List<Answer> answers) {
         this.person = person;
-        this.question = question;
-        this.answers = answer;
+        this.questionMessage = questionMessage;
+        this.answers = answers;
     }
 
     public Long getId() {
@@ -43,12 +42,12 @@ public class Question {
         this.person = person;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getQuestionMessage() {
+        return questionMessage;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestionMessage(String question) {
+        this.questionMessage = question;
     }
 
     public List<Answer> getAnswers() {
