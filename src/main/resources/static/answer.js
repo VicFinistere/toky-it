@@ -132,7 +132,7 @@ function get_questions() {
             // Filter
             if (!already_asked_questions.includes(question_object.question)
                 && (filter === "spam" && isASpam(question_object) === 'spam'
-                || filter === "answered" && question_object.answer[0].answer !== 'undefined'
+                || filter === "answered" && typeof question_object.answer !== 'undefined'
                 || filter === "code" && question_object.question.includes("CODE")
                 || filter === "info" && question_object.question.includes("INFO")
                 || filter === "it" && (!question_object.question.includes("CODE") && !question_object.question.includes("INFO")))) {
