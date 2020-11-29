@@ -77,6 +77,7 @@ function openOneQuestion(e, idQuestion, txt) {
 }
 
 function openAllQuestions() {
+    $('#questions_textarea').load(location.href +  ' #questions_textarea');
     $("#question_area").hide();
     $("#questions_area").show();
 }
