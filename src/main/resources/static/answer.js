@@ -127,7 +127,7 @@ function get_questions() {
     $.get("/getQuestionsWithFilter",
         {filter: filter},
         function (questions) {
-        console.log(questions);
+        console.log("Questions for " + filter + " : " + questions);
 
         $.each(questions, function (i, question_object) {
             var question_list = $("#questions_list");
