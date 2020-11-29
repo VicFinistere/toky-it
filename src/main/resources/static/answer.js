@@ -139,7 +139,7 @@ function get_questions() {
                 }
 
                 // Already answered
-                else if (question_object.answer !== null && filter === "answered") {
+                else if (question_object.answer.answer !== null && filter === "answered") {
 
                     insertQuestion(
                         question_list,
