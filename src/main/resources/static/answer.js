@@ -125,36 +125,37 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 
 function get_questions() {
     let filter = $("#questions_filter").val();
-    $.ajax({
-        url: "/getQuestionsWithFilter",
-        data: {'filter': filter},
-        success: function (questions, status) {
+    if (filter) {
+        $.ajax({
+            url: "/getQuestionsWithFilter",
+            data: {'filter': filter},
+            success: function (questions, status) {
 
 
-            console.log("Questions for " + filter + " : " + questions);
+                console.log("Questions for " + filter + " : " + questions);
 
-            $.each(questions, function (i, question_object) {
-                console.log("Question object " + question_object);
-                var question_list = $("#questions_list");
-                let already_asked_questions = question_list.val();
+                $.each(questions, function (i, question_object) {
+                    console.log("Question object " + question_object);
+                    var question_list = $("#questions_list");
+                    let already_asked_questions = question_list.val();
 
-                // Filter
-                if (!already_asked_questions.includes(question_object.question)) {
+                    // Filter
+                    if (!already_asked_questions.includes(question_object.question)) {
 
-                    insertQuestion(
-                        question_list,
-                        already_asked_questions,
-                        question_object);
+                        insertQuestion(
+                            question_list,
+                            already_asked_questions,
+                            question_object);
 
-                }
-            });
-        }, error: function (e) {
+                    }
+                });
+            }, error: function (e) {
 
-            console.log("ERROR : ", e);
+                console.log("ERROR : ", e);
 
-        }
-    });
-
+            }
+        });
+    }
 }
 
 
