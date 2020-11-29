@@ -133,9 +133,9 @@ function get_questions() {
             // Filter
             if (!already_asked_questions.includes(question_object.question)
                 && (filter === "spam" && isASpam(question_object) === 'spam'
-                || filter === "answered" && typeof question_object.answer[0] !== 'undefined'
-                || filter === "code" && question_object.question.includes("CODE")
-                || filter === "info" && question_object.question.includes("INFO")
+                || filter === "answered" && !(isASpam(question_object) === 'spam') && typeof question_object.answer[0] !== 'undefined'
+                || filter === "code" && typeof question_object.answer[0] === 'undefined' && question_object.question.includes("CODE")
+                || filter === "info" && typeof question_object.answer[0] !== 'undefined' && question_object.question.includes("INFO")
                 || filter === "it" && !(isASpam(question_object) === 'spam') && (!question_object.question.includes("CODE") && !question_object.question.includes("INFO")))) {
 
                 insertQuestion(
