@@ -34,14 +34,14 @@
     </h1>
 
     <div class="btn-group form-control" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-info active">Ask</button>
-        <button type="button" class="btn btn-info">Answer</button>
+        <button onclick="window.history.pushState('', 'Toky IT', '/');" type="button" class="btn btn-info">Ask</button>
+        <button onclick="window.history.pushState('', 'Toky IT (Answer)', '/answer');" type="button" class="btn btn-info active">Answer</button>
     </div>
     <div id="chat_area" title="Toky IT community chat"></div>
     <select class="form-control" id="question_theme">
         <option>Subject</option>
         <option>CODE Question (Coding question)</option>
-        <option>INFO Question (Information Technoloies information)</option>
+        <option>INFO Question (Information Technologies information)</option>
     </select>
     <input type="text"
            id="input_text"

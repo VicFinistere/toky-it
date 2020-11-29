@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="This page is made for the IT community to ask and answer questions.">
     <meta name="author" content="Zoé Belleton">
-    <title>Toky IT</title>
+    <title>Toky IT (Answer)</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -37,6 +37,10 @@
     <input type="hidden" id="questions_filter">
 
     <div id="questions_area">
+    <div class="btn-group form-control" role="group" aria-label="Basic example">
+        <button onclick="window.history.pushState('', 'Toky IT', '/');" type="button" class="btn btn-info">Ask</button>
+        <button onclick="window.history.pushState('', 'Toky IT (Answer)', '/answer');" type="button" class="btn btn-info active">Answer</button>
+    </div>
     <p>Select a question</p>
     <div class="btn-group btn-default" role="group" aria-label="Basic example">
         <button type="button"
