@@ -130,6 +130,7 @@ function get_questions() {
         console.log("Questions for " + filter + " : " + questions);
 
         $.each(questions, function (i, question_object) {
+            console.log("Question object " + question_object);
             var question_list = $("#questions_list");
             let already_asked_questions = question_list.val();
 
