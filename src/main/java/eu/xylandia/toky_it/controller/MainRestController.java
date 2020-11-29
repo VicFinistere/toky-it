@@ -90,7 +90,8 @@ public class MainRestController {
         // answered
         else if(filter.contains("answered")){
             List<Question> answeredQuestions = new ArrayList<>();
-            List<Question> questions = questionRepository.findQuestionByQuestionNotContainingAndQuestionNotContaining("Code", "Technologies");
+            List<Question> questions = questionRepository.findQuestionByQuestionNotContaining("Code");
+            questions.addAll(questionRepository.findQuestionByQuestionNotContaining( "Technologies"));
             for(Question question: questions){
                 if(question.isAnsweredQuestion()){
                     answeredQuestions.add(question);

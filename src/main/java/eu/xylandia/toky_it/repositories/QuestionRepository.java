@@ -11,6 +11,6 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
     List<Question> findByQuestion(String question);
     Question findById(long id);
     List<Question> findQuestionByQuestionContaining(String string);
-    List<Question> findQuestionByQuestionNotContainingAndQuestionNotContaining(String string1, String string2);
+    List<Question> findQuestionByQuestionNotContaining(String filter);
     List<Question> findQuestionByAnswer(Answer answer);
 }
