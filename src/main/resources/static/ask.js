@@ -94,9 +94,10 @@ function sending_text(isAnswerExpected = true) {
 function answer() {
     //Debug
     console.debug("answer (messaging.js))");
-    var user_text = $('#chat_area').children('p.user_bubble_msg').last().html();
-
-    bot_answering(user_text);
+    let theme = $("#question_theme").val();
+    let user_text = $('#chat_area').children('p.user_bubble_msg').last().html();
+    let userCheckedText = "[" + theme + "]" + user_text;
+    bot_answering(userCheckedText);
 
     //Input text value to null
     $("#input_text").val("");
