@@ -62,20 +62,20 @@ public class MainRestController {
 
         // code
         if(filter.contains("code")){
-           return questionRepository.findQuestionByQuestionContaining("Code");
+           return questionRepository.findQuestionByQuestionMessageContaining("Code");
         }
 
         // info
         else if(filter.contains("info")){
-            return questionRepository.findQuestionByQuestionContaining("Technologies");
+            return questionRepository.findQuestionByQuestionMessageContaining("Technologies");
         }
 
         // answeredIT
         else if(filter.contains("answeredIT")){
             List<Question> answeredQuestions = new ArrayList<>();
 
-            List<Question> questions = questionRepository.findQuestionByQuestionContaining("Code");
-            questions.addAll(questionRepository.findQuestionByQuestionContaining("Technologies"));
+            List<Question> questions = questionRepository.findQuestionByQuestionMessageContaining("Code");
+            questions.addAll(questionRepository.findQuestionByQuestionMessageContaining("Technologies"));
 
             for(Question question: questions){
                 if(question.isAnsweredQuestion()){
@@ -90,8 +90,8 @@ public class MainRestController {
         // answered
         else if(filter.contains("answered")){
             List<Question> answeredQuestions = new ArrayList<>();
-            List<Question> questions = questionRepository.findQuestionByQuestionNotContaining("Code");
-            questions.addAll(questionRepository.findQuestionByQuestionNotContaining( "Technologies"));
+            List<Question> questions = questionRepository.findQuestionByQuestionMessageNotContaining("Code");
+            questions.addAll(questionRepository.findQuestionByQuestionMessageNotContaining( "Technologies"));
             for(Question question: questions){
                 if(question.isAnsweredQuestion()){
                     answeredQuestions.add(question);

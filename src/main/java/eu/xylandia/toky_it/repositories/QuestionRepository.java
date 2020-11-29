@@ -10,7 +10,7 @@ public interface QuestionRepository extends CrudRepository<Question, Long> {
     List<Question> findByPerson(String name);
     List<Question> findByQuestion(String question);
     Question findById(long id);
-    List<Question> findQuestionByQuestionContaining(String string);
-    List<Question> findQuestionByQuestionNotContaining(String filter);
+    List<Question> findQuestionByQuestionMessageContaining(String string);
+    List<Question> findQuestionByQuestionMessageNotContaining(String filter);
     List<Question> findQuestionByAnswer(Answer answer);
 }
