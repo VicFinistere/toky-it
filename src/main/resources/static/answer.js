@@ -138,7 +138,7 @@ function get_questions() {
                 || filter === "answeredIT" && !(isASpam(question_object) === 'spam') && typeof question_object.answer[0] !== 'undefined'
                 || filter === "code" && typeof question_object.answer[0] === 'undefined' && question_object.question.includes("CODE")
                 || filter === "info" && typeof question_object.answer[0] !== 'undefined' && question_object.question.includes("INFO")
-                || filter === "it" && !(isASpam(question_object) === 'spam') && (!question_object.question.includes("CODE") && !question_object.question.includes("INFO")))) {
+                || filter === "it" && !(isASpam(question_object) === 'spam') && (!question_object.question.includes("Code") && !question_object.question.includes("Technologies")))) {
 
                 insertQuestion(
                     question_list,
