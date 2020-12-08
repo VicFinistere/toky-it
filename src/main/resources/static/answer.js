@@ -129,6 +129,7 @@ function get_questions() {
 
         if (filter === "info") {
             $.get("/getInfoQuestions", function (data) {
+                console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
         }
@@ -136,6 +137,7 @@ function get_questions() {
         else if(filter === "code")
         {
             $.get("/getCodeQuestions", function (data) {
+                console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
         }
@@ -143,6 +145,7 @@ function get_questions() {
         else if(filter === "answered")
         {
             $.get("/getAnsweredQuestions", function (data) {
+                console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
         }
@@ -150,6 +153,7 @@ function get_questions() {
         else if(filter === "answeredIT")
         {
             $.get("/getAnsweredItQuestions", function (data) {
+                console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
         }
@@ -157,6 +161,7 @@ function get_questions() {
         else if(filter === "spam")
         {
             $.get("/getSpamQuestions", function (data) {
+                console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
         }
@@ -167,7 +172,7 @@ function get_questions() {
 
 function print_questions(questions){
     $.each(questions, function (i, question_object) {
-        console.log("Question object " + question_object);
+        console.log("Question object " + question_object + "question : " + question_object.q);
         var question_list = $("#questions_list");
         let already_asked_questions = question_list.val();
 
@@ -179,6 +184,8 @@ function print_questions(questions){
                 already_asked_questions,
                 question_object);
 
+        } else {
+            console.log("Question already printed " + question_object.question);
         }
     });
 }
