@@ -116,7 +116,6 @@ public class MainRestController {
         return spamQuestions;
     }
 
-
     @PostMapping("/getQuestion")
     public Question getQuestion(@RequestParam long idQuestion) {
         return questionRepository.findById(idQuestion);

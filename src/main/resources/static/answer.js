@@ -116,10 +116,10 @@ function reloadQuestions(filter) {
 }
 
 function insertQuestion(question_list, already_asked_questions, question_object) {
-    question_list.val(already_asked_questions + "\n" + question_object.question);
+    question_list.val(already_asked_questions + "\n" + question_object.questionMessage);
     $('<p>', {
         class: 'info_questions ' + question_object.id,
-        text: question_object.question
+        text: question_object.questionMessage
     }).appendTo('#questions_textarea');
 }
 
@@ -177,8 +177,8 @@ function print_questions(questions){
         let already_asked_questions = question_list.val();
 
         // Filter
-        if (!already_asked_questions.includes(question_object.question)) {
-            if(question_object.question === undefined){
+        if (!already_asked_questions.includes(question_object.questionMessage)) {
+            if(question_object.questionMessage === undefined){
                 console.log("Question is undefined")
             } else {
 
@@ -188,7 +188,7 @@ function print_questions(questions){
                 question_object);
             }
         } else {
-            console.log("Question already printed " + question_object.question);
+            console.log("Question already printed " + question_object.questionMessage);
         }
     });
 }
