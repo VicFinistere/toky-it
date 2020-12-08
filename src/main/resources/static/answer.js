@@ -126,43 +126,62 @@ function insertQuestion(question_list, already_asked_questions, question_object)
 function get_questions() {
     let filter = $("#questions_filter").val();
     if (filter) {
+
         if (filter === "info") {
             $.get("/getInfoQuestions", function (data) {
-                console.log(data);
+                print_questions(data);
             });
         }
-        $.ajax({
-            url: "/getQuestionsWithFilter",
-            data: {'filter': filter},
-            success: function (questions, status) {
+
+        else if(filter === "code")
+        {
+            $.get("/getCodeQuestions", function (data) {
+                print_questions(data);
+            });
+        }
+
+        else if(filter === "answered")
+        {
+            $.get("/getAnsweredQuestions", function (data) {
+                print_questions(data);
+            });
+        }
+
+        else if(filter === "answeredIT")
+        {
+            $.get("/getAnsweredItQuestions", function (data) {
+                print_questions(data);
+            });
+        }
+
+        else if(filter === "spam")
+        {
+            $.get("/getSpamQuestions", function (data) {
+                print_questions(data);
+            });
+        }
 
 
-                console.log("Questions for " + filter + " : " + questions);
-
-                $.each(questions, function (i, question_object) {
-                    console.log("Question object " + question_object);
-                    var question_list = $("#questions_list");
-                    let already_asked_questions = question_list.val();
-
-                    // Filter
-                    if (!already_asked_questions.includes(question_object.question)) {
-
-                        insertQuestion(
-                            question_list,
-                            already_asked_questions,
-                            question_object);
-
-                    }
-                });
-            }, error: function (e) {
-
-                console.log("ERROR : ", e);
-
-            }
-        });
     }
 }
 
+function print_questions(questions){
+    $.each(questions, function (i, question_object) {
+        console.log("Question object " + question_object);
+        var question_list = $("#questions_list");
+        let already_asked_questions = question_list.val();
+
+        // Filter
+        if (!already_asked_questions.includes(question_object.question)) {
+
+            insertQuestion(
+                question_list,
+                already_asked_questions,
+                question_object);
+
+        }
+    });
+}
 
 get_questions();
 setInterval(get_questions, 10000);

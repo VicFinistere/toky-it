@@ -66,63 +66,54 @@ public class MainRestController {
         return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
     }
 
-    @GetMapping("/getQuestionsWithFilter")
-    public Iterable<Question> getQuestionsWithFilter(@RequestParam String filter) {
+    @GetMapping("/getCodeQuestions")
+    public Iterable<Question> getCodeQuestions()
+    {
+        return questionRepository.findQuestionByQuestionMessageContaining(CODE);
+    }
 
-        // code
-        if (filter.contains("code")) {
-            return questionRepository.findQuestionByQuestionMessageContaining(CODE);
-        }
+    @GetMapping("/getAnsweredItQuestions")
+    public Iterable<Question> getAnsweredItQuestions()
+    {
+        List<Question> answeredQuestions = new ArrayList<>();
 
-        // info
-        else if (filter.contains("info")) {
-            return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
-        }
+        List<Question> questions = questionRepository.findQuestionByQuestionMessageContaining(CODE);
+        questions.addAll(questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES));
 
-        // answeredIT
-        else if (filter.contains("answeredIT")) {
-            List<Question> answeredQuestions = new ArrayList<>();
-
-            List<Question> questions = questionRepository.findQuestionByQuestionMessageContaining(CODE);
-            questions.addAll(questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES));
-
-            for (Question question : questions) {
-                if (question.isAnsweredQuestion()) {
-                    answeredQuestions.add(question);
-                }
-
+        for (Question question : questions) {
+            if (question.isAnsweredQuestion()) {
+                answeredQuestions.add(question);
             }
 
-            return answeredQuestions;
         }
 
-        // answered
-        else if (filter.contains("answered")) {
-            List<Question> answeredQuestions = new ArrayList<>();
-            List<Question> questions = questionRepository.findQuestionByQuestionMessageNotContaining(CODE);
-            questions.addAll(questionRepository.findQuestionByQuestionMessageNotContaining(TECHNOLOGIES));
-            for (Question question : questions) {
-                if (question.isAnsweredQuestion()) {
-                    answeredQuestions.add(question);
-                }
+        return answeredQuestions;
+    }
 
+    @GetMapping("/getSpamQuestions")
+    public Iterable<Question> getSpamQuestions()
+    {
+        List<Question> answeredQuestions = new ArrayList<>();
+        List<Question> questions = questionRepository.findQuestionByQuestionMessageNotContaining(CODE);
+        questions.addAll(questionRepository.findQuestionByQuestionMessageNotContaining(TECHNOLOGIES));
+        for (Question question : questions) {
+            if (question.isAnsweredQuestion()) {
+                answeredQuestions.add(question);
             }
-            return answeredQuestions;
+
         }
+        return answeredQuestions;
+    }
 
-        // spam
-        else if (filter.contains("spam")) {
-            List<Question> spamQuestions = new ArrayList<>();
-            Iterable<Answer> answersList = answerRepository.findByAnswerContaining("not an IT question");
-            for (Answer answers : answersList) {
-                spamQuestions.addAll(questionRepository.findQuestionByAnswers(answers));
-            }
-            return spamQuestions;
-
-        } else {
-            return questionRepository.findAll();
+    @GetMapping("/getAnsweredQuestions")
+    public Iterable<Question> getAnsweredQuestions()
+    {
+        List<Question> spamQuestions = new ArrayList<>();
+        Iterable<Answer> answersList = answerRepository.findByAnswerContaining("not an IT question");
+        for (Answer answers : answersList) {
+            spamQuestions.addAll(questionRepository.findQuestionByAnswers(answers));
         }
-
+        return spamQuestions;
     }
 
 
