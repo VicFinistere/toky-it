@@ -104,10 +104,6 @@ function answer() {
 
 }
 
-var user_input = $('#chat_area').children('p.user_bubble_msg').last();
-var robot_input = $('#chat_area').children('p.robot_info_msg').last();
-
-
 function bot_answering(user_checked_text) {
     //Log
     console.log("bot_answering (bot_answer.js)");
@@ -133,25 +129,10 @@ function bot_answering(user_checked_text) {
 
     bot_response("Someone is coming to answer your question...otherwise try to google it !");
     scroll();
-    // function get_random_answer(user_checked_text) {
-    //     for(var i = 0; i < sentences.length; i++){
-    //         if(sentences[i] === user_checked_text ){
-    //             var options = answers[i];
-    //             var response = options[Math.floor(Math.random() * options.length)];
-    //         }
-    //     }
-    //     if(response){
-    //         return response
-    //     } else {
-    //         return user_checked_text;
-    //     }
-    // }
-
-
-    scroll();
 }
 
 function bot_response(response) {
+    var user_input = chat_area.children('p.user_bubble_msg').last();
     if (user_input.css('color') !== 'rgb(230, 230, 230)') {
         $('<p>', {class: 'robot_info_msg', text: response}).appendTo('#chat_area');
         var d = new Date();
