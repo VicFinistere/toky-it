@@ -135,12 +135,12 @@ function bot_answering(user_checked_text) {
 function bot_response(response) {
     let chat_area = $('#chat_area');
     let user_input = chat_area.children('p.user_bubble_msg').last();
-    if (user_input.css('color') !== 'rgb(230, 230, 230)') {
+    if (user_input.css('color') !== 'rgb(255, 255, 255)') {
         $('<p>', {class: 'robot_info_msg', text: response}).appendTo('#chat_area');
         let d = new Date();
         let timer = d.toLocaleTimeString();
         $("<p class='text-center'><small style='font-size:10px;margin-right: 65%;'>" + timer + "</small></p>").appendTo('#chat_area');
-        user_input.css('color', 'rgb(230, 230, 230)');
+        user_input.css('color', 'rgb(255, 255, 255)');
     }
 }
 
