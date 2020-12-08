@@ -178,12 +178,15 @@ function print_questions(questions){
 
         // Filter
         if (!already_asked_questions.includes(question_object.question)) {
+            if(question_object.question === undefined){
+                console.log("Question is undefined")
+            } else {
 
             insertQuestion(
                 question_list,
                 already_asked_questions,
                 question_object);
-
+            }
         } else {
             console.log("Question already printed " + question_object.question);
         }
