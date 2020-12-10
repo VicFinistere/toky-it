@@ -132,4 +132,9 @@ public class MainRestController {
         Question questionToDelete = questionRepository.findByQuestionMessage(question).get(0);
         questionRepository.delete(questionToDelete);
     }
+
+    @RequestMapping("/blank")
+    public String getBlank(){
+        return "";
+    }
 }
