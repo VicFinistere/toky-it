@@ -62,26 +62,22 @@ public class MainRestController {
     }
 
     @GetMapping("/getInfoQuestions")
-    public Iterable<Question> getInfoQuestions()
-    {
+    public Iterable<Question> getInfoQuestions() {
         return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
     }
 
     @GetMapping("/getStackKey")
-    public String getStackKey()
-    {
+    public String getStackKey() {
         return "${STACK_KEY}";
     }
 
     @GetMapping("/getCodeQuestions")
-    public Iterable<Question> getCodeQuestions()
-    {
+    public Iterable<Question> getCodeQuestions() {
         return questionRepository.findQuestionByQuestionMessageContaining(CODE);
     }
 
     @GetMapping("/getAnsweredItQuestions")
-    public Iterable<Question> getAnsweredItQuestions()
-    {
+    public Iterable<Question> getAnsweredItQuestions() {
         List<Question> answeredQuestions = new ArrayList<>();
 
         List<Question> questions = questionRepository.findQuestionByQuestionMessageContaining(CODE);
@@ -98,8 +94,7 @@ public class MainRestController {
     }
 
     @GetMapping("/getSpamQuestions")
-    public Iterable<Question> getSpamQuestions()
-    {
+    public Iterable<Question> getSpamQuestions() {
         List<Question> answeredQuestions = new ArrayList<>();
         List<Question> questions = questionRepository.findQuestionByQuestionMessageNotContaining(CODE);
         questions.addAll(questionRepository.findQuestionByQuestionMessageNotContaining(TECHNOLOGIES));
@@ -113,8 +108,7 @@ public class MainRestController {
     }
 
     @GetMapping("/getAnsweredQuestions")
-    public Iterable<Question> getAnsweredQuestions()
-    {
+    public Iterable<Question> getAnsweredQuestions() {
         List<Question> spamQuestions = new ArrayList<>();
         Iterable<Answer> answersList = answerRepository.findByAnswerContaining("not an IT question");
         for (Answer answers : answersList) {
@@ -134,8 +128,4 @@ public class MainRestController {
         questionRepository.delete(questionToDelete);
     }
 
-    @RequestMapping("/blank")
-    public String getBlank(){
-        return "";
-    }
 }
