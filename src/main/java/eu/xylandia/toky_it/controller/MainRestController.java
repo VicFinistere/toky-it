@@ -69,7 +69,7 @@ public class MainRestController {
     @GetMapping("/getStackKey")
     public String getStackKey()
     {
-        return "${STACK_KEY};
+        return "${STACK_KEY}";
     }
 
     @GetMapping("/getCodeQuestions")
