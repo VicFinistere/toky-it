@@ -134,7 +134,7 @@ public class MainRestController {
         questionRepository.delete(questionToDelete);
     }
 
-    @RequestMapping("/blank")
+    @GetMapping("/blank")
     public String getBlank(){
         return "";
     }
