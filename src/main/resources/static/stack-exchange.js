@@ -10,6 +10,8 @@ $.get("/getStackKey", function (stack_key) {
         //   documentation site
         clientId: 1,
         key: stack_key,
+        // Used for cross domain communication, it will be validated
+        channelUrl: 'toky-ok-it.herokuapp.com/blank',
         // Called when all initialization is finished
         complete: function (data) {
             $('#login-button')
