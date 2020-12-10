@@ -11,7 +11,7 @@ $.get("/getStackKey", function (stack_key) {
         clientId: 1,
         key: stack_key,
         // Used for cross domain communication, it will be validated
-        channelUrl: 'https://api.stackexchange.com/docs/proxy',
+        channelUrl: 'http://toky-ok-it.herokuapp.com/',
         // Called when all initialization is finished
         complete: function (data) {
             $('#login-button')
