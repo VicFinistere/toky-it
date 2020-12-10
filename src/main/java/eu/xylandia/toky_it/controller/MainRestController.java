@@ -66,6 +66,12 @@ public class MainRestController {
         return questionRepository.findQuestionByQuestionMessageContaining(TECHNOLOGIES);
     }
 
+    @GetMapping("/getStackKey")
+    public String getStackKey()
+    {
+        return "${STACK_KEY};
+    }
+
     @GetMapping("/getCodeQuestions")
     public Iterable<Question> getCodeQuestions()
     {
