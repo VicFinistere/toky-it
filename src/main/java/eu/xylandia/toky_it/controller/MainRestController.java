@@ -135,17 +135,9 @@ public class MainRestController {
     }
 
     @GetMapping("/getUser")
-    public String getUsername() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        ObjectMapper mapper = new ObjectMapper();
-        //Converting the Object to JSONString
-        String jsonString = null;
-        try {
-            jsonString = mapper.writeValueAsString(principal);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return jsonString;
+    public Object getUsername() {
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
     }
 
 }
