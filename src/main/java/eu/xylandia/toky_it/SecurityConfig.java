@@ -30,6 +30,8 @@ public class SecurityConfig {
             UserDetails userPrincipal = (UserDetails)authentication.getPrincipal();
             System.out.println("User principal name =" + userPrincipal.getUsername());
             System.out.println("Is user enabled =" + userPrincipal.isEnabled());
+        } else {
+            System.out.println("Anonymous");
         }
     }
 }
