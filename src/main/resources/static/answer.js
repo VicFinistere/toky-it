@@ -195,12 +195,14 @@ function print_questions(questions){
 
 
 $(function () {
+    try {
+        $.get("/getUser", function (user) {
+            Cookies.set('user', user.attributes.login);
+        });
+    } catch (error) {
+        console.error("Anonymous user");
+    }
 
-    $.get("/getUser", function (user) {
-        console.log(user);
-        console.log(user.attributes);
-        console.log(user.attributes.login);
-    });
 });
 
 get_questions();
