@@ -195,7 +195,7 @@ function print_questions(questions){
 
 
 $(function () {
-    if(!!$.cookie('user')){
+    if(!Cookies.get("user")){
         try {
             $.get("/getUser", function (user) {
                 Cookies.set('user', user.attributes.login);
