@@ -1,5 +1,7 @@
 package eu.xylandia.toky_it.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.xylandia.toky_it.model.Answer;
 import eu.xylandia.toky_it.model.Person;
 import eu.xylandia.toky_it.model.Question;
@@ -134,7 +136,16 @@ public class MainRestController {
 
     @GetMapping("/getUser")
     public String getUsername() {
-        return ((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String jsonString = null;
+        try {
+            jsonString = mapper.writeValueAsString(principal);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return jsonString;
     }
 
 }
