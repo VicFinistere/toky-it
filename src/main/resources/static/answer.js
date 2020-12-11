@@ -94,9 +94,12 @@ $(function () {
     });
 
     // Store user in hidden input (cookies unwanted)
-    $.get("/getUser", function (user) {
-        $("#user").val(user.attributes.login);
-    });
+    if ($("#user").val() === '') {
+        $("#user").val("User undefined");
+        $.get("/getUser", function (user) {
+            $("#user").val(user.attributes.login);
+        });
+    }
 });
 
 function isASpam(question_object) {
@@ -137,34 +140,22 @@ function get_questions() {
                 console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
-        }
-
-        else if(filter === "code")
-        {
+        } else if (filter === "code") {
             $.get("/getCodeQuestions", function (data) {
                 console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
-        }
-
-        else if(filter === "answered")
-        {
+        } else if (filter === "answered") {
             $.get("/getAnsweredQuestions", function (data) {
                 console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
-        }
-
-        else if(filter === "answeredIT")
-        {
+        } else if (filter === "answeredIT") {
             $.get("/getAnsweredItQuestions", function (data) {
                 console.log("Searching " + filter + " questions");
                 print_questions(data);
             });
-        }
-
-        else if(filter === "spam")
-        {
+        } else if (filter === "spam") {
             $.get("/getSpamQuestions", function (data) {
                 console.log("Searching " + filter + " questions");
                 print_questions(data);
@@ -175,7 +166,7 @@ function get_questions() {
     }
 }
 
-function print_questions(questions){
+function print_questions(questions) {
     $.each(questions, function (i, question_object) {
         console.log("Question object " + question_object + "question : " + question_object.q);
         var question_list = $("#questions_list");
@@ -183,21 +174,20 @@ function print_questions(questions){
 
         // Filter
         if (!already_asked_questions.includes(question_object.questionMessage)) {
-            if(question_object.questionMessage === undefined){
+            if (question_object.questionMessage === undefined) {
                 console.log("Question is undefined")
             } else {
 
-            insertQuestion(
-                question_list,
-                already_asked_questions,
-                question_object);
+                insertQuestion(
+                    question_list,
+                    already_asked_questions,
+                    question_object);
             }
         } else {
             console.log("Question already printed " + question_object.questionMessage);
         }
     });
 }
-
 
 
 get_questions();
