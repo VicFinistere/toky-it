@@ -195,14 +195,16 @@ function print_questions(questions){
 
 
 $(function () {
-    try {
-        $.get("/getUser", function (user) {
-            Cookies.set('user', user.attributes.login);
-        });
-    } catch (error) {
-        console.error("Anonymous user");
-    }
+    if(!!$.cookie('user')){
+        try {
+            $.get("/getUser", function (user) {
+                Cookies.set('user', user.attributes.login);
+            });
+        } catch (error) {
+            Cookies.set('user', "Unknown user", { expires: 30 / 1440, path: '/' });
 
+        }
+    }
 });
 
 get_questions();
