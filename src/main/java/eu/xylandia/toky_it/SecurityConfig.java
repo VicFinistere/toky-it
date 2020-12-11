@@ -17,13 +17,8 @@ import javax.sql.DataSource;
 public class SecurityConfig {
 
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .authorizeRequests()
-                .antMatchers("/").hasRole("USER")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+
     }
 }
 
