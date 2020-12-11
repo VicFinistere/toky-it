@@ -7,6 +7,10 @@ import eu.xylandia.toky_it.repositories.AnswerRepository;
 import eu.xylandia.toky_it.repositories.PersonRepository;
 import eu.xylandia.toky_it.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,6 +130,22 @@ public class MainRestController {
     public void removeQuestion(@RequestParam String question) {
         Question questionToDelete = questionRepository.findByQuestionMessage(question).get(0);
         questionRepository.delete(questionToDelete);
+    }
+
+    @GetMapping("/getUser")
+    public String getUsername() {
+        String username;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
+            System.out.println("User principal name =" + userPrincipal.getUsername());
+            username = userPrincipal.getUsername();
+            System.out.println("Is user enabled =" + userPrincipal.isEnabled());
+        } else {
+            System.out.println("Anonymous");
+        }
+
+        return username;
     }
 
 }
