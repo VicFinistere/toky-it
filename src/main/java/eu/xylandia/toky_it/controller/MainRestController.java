@@ -134,18 +134,8 @@ public class MainRestController {
 
     @GetMapping("/getUser")
     public String getUsername() {
-        String username = "";
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
-            System.out.println("User principal name =" + userPrincipal.getUsername());
-            username = userPrincipal.getUsername();
-            System.out.println("Is user enabled =" + userPrincipal.isEnabled());
-        } else {
-            System.out.println("Anonymous");
-        }
-
-        return username;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
     }
 
 }
