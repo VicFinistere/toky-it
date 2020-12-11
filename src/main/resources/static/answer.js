@@ -1,3 +1,10 @@
+function getUser(){
+    function getUser() {
+        $.get("/getUser", function (user) {
+            Cookies.set('user', user.attributes.login);
+        });
+    }
+}
 function getAnswers(idQuestion) {
 
     console.log(idQuestion);
@@ -194,18 +201,6 @@ function print_questions(questions){
 }
 
 
-$(function () {
-    if(!Cookies.get("user")){
-        try {
-            $.get("/getUser", function (user) {
-                Cookies.set('user', user.attributes.login);
-            });
-        } catch (error) {
-            Cookies.set('user', "Unknown user", { expires: 30 / 1440, path: '/' });
-
-        }
-    }
-});
 
 get_questions();
 setInterval(get_questions, 10000);
