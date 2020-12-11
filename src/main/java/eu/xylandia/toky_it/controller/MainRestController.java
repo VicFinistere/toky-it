@@ -134,7 +134,7 @@ public class MainRestController {
 
     @GetMapping("/getUser")
     public String getUsername() {
-        String username;
+        String username = "";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
             UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
