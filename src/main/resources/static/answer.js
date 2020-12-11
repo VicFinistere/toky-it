@@ -193,5 +193,15 @@ function print_questions(questions){
     });
 }
 
+
+$(function () {
+
+    $.get("/getUser", function (user) {
+        console.log(user);
+        console.log(user.attributes);
+        console.log(user.attributes.login);
+    });
+});
+
 get_questions();
 setInterval(get_questions, 10000);
