@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .antMatchers("/").hasRole("USER")
                 .and()
                 .formLogin()
-                .loginPage("/")
+                .loginPage("/login")
                 .permitAll();
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
