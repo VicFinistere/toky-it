@@ -1,10 +1,3 @@
-function getUser(){
-    function getUser() {
-        $.get("/getUser", function (user) {
-            Cookies.set('user', user.attributes.login);
-        });
-    }
-}
 function getAnswers(idQuestion) {
 
     console.log(idQuestion);
@@ -98,6 +91,11 @@ $(function () {
         let txt = $(e.target).text();
         let idQuestion = $(e.target).attr("class").replaceAll("info_questions ", "");
         openOneQuestion(e, idQuestion, txt);
+    });
+
+    // Store user in hidden input (cookies unwanted)
+    $.get("/getUser", function (user) {
+        $("#user").val(user.attributes.login);
     });
 });
 
