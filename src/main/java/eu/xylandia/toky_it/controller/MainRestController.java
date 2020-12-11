@@ -134,14 +134,7 @@ public class MainRestController {
 
     @GetMapping("/getUser")
     public String getUsername() {
-        String username = "";
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(principal instanceof UserDetails){
-            username = ((UserDetails)principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
-        return username;
+        return ((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
     }
 
 }
