@@ -161,13 +161,3 @@ function askRandomly() {
 
 }
 
-function getUser(){
-    // Store user in hidden input (cookies unwanted)
-    if ($("#user").val() === '') {
-
-        $("#user").val("User undefined");
-        $.get("/getUser", function (user) {
-            $("#user").val(user.attributes.login);
-        });
-    }
-}
