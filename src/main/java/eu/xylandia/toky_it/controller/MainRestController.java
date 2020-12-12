@@ -134,4 +134,10 @@ public class MainRestController {
         questionRepository.delete(questionToDelete);
     }
 
+    @GetMapping("/getUser")
+    public String getUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
+    }
+
 }
