@@ -94,16 +94,6 @@ $(function () {
     });
 });
 
-function getUser(){
-    // Store user in hidden input (cookies unwanted)
-    if ($("#user").val() === '') {
-
-        $("#user").val("User undefined");
-        $.get("/getUser", function (user) {
-            $("#user").val(user.attributes.login);
-        });
-    }
-}
 
 function isASpam(question_object) {
     let status = "";
@@ -195,3 +185,14 @@ function print_questions(questions) {
 
 get_questions();
 setInterval(get_questions, 10000);
+
+function getUser(){
+    // Store user in hidden input (cookies unwanted)
+    if ($("#user").val() === '') {
+
+        $("#user").val("User undefined");
+        $.get("/getUser", function (user) {
+            $("#user").val(user.attributes.login);
+        });
+    }
+}
