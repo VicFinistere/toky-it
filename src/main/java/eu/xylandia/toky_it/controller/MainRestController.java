@@ -136,8 +136,7 @@ public class MainRestController {
 
     @GetMapping("/getUser")
     public Object getUsername() {
-        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        return  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
 }

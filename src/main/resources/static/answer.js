@@ -92,15 +92,18 @@ $(function () {
         let idQuestion = $(e.target).attr("class").replaceAll("info_questions ", "");
         openOneQuestion(e, idQuestion, txt);
     });
+});
 
+function getUser(){
     // Store user in hidden input (cookies unwanted)
     if ($("#user").val() === '') {
+
         $("#user").val("User undefined");
         $.get("/getUser", function (user) {
             $("#user").val(user.attributes.login);
         });
     }
-});
+}
 
 function isASpam(question_object) {
     let status = "";
