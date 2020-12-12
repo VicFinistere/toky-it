@@ -22,7 +22,7 @@ public class SecurityConfig {
                 .antMatchers("/").hasRole("USER")
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/")
                 .permitAll();
     }
 }
