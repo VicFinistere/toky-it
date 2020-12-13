@@ -124,8 +124,7 @@
 <script src="/answer.js"></script>
 <script>
     $(function () {
-        let user_code = $("#user_code").text();
-        $.get("https://api.github.com/user/" + user_code, function (data) {
+        $.get("https://api.github.com/user/" + $("#user_code").text(), function (data) {
             console.log(data);
             console.log(data.login);
         });
