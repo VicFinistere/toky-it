@@ -88,6 +88,7 @@
 <script>
     $(function () {
         $.get("https://api.github.com/user/" + $("#user_code").text(), function (data) {
+            console.log($("#user_code").text());
             console.log(data);
             console.log(data.login);
         });
