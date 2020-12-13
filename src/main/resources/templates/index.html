@@ -73,7 +73,9 @@
 
     <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
         <span th:case="${false}"><button class="btn btn-link text-info" onclick="$(location).attr('href','/login');">Login with Github</button></span>
-        <span th:case="${true}"><span id="user_code" sec:authentication="name"></span></span>
+        <span th:case="${true}">
+            <span id="user_code" sec:authentication="name"></span>
+            <span id="username" sec:authentication="attributes.login"></span></span>
         <span th:case="*">Should never happen, but who knows...</span>
     </div>
 
