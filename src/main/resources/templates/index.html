@@ -75,11 +75,6 @@
         <span th:case="${false}"><button class="btn btn-link text-info" onclick="$(location).attr('href','/login');">Login with Github</button></span>
         <span th:case="${true}">
             <span id="user_code" sec:authentication="name"></span>
-            <input style="border-color:transparent;background:transparent;"
-                   id="user_code_input"
-                   type="text"
-                   onload="getUsername()"
-                   sec:authentication="name" disabled/>
         </span>
         <span th:case="*">Should never happen, but who knows...</span>
     </div>
@@ -92,13 +87,9 @@
         crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/27cdd7d8e9.js" crossorigin="anonymous"></script>
 <script src="/ask.js"></script>
-<script>
-    function getUsername() {
-        console.log($("#user_code_input").val());
-    }
+<script type="text/javascript" th:inline="javascript">
+    var username = /*[[${#authentication.name}]]*/ "";
+    console.log(username);
 </script>
-
-
-
 </body>
 </html>
