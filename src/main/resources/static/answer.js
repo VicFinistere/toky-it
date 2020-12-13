@@ -181,14 +181,6 @@ function print_questions(questions) {
     });
 }
 
-$(function () {
-    console.log($("#user_code").text());
-    $.get("https://api.github.com/user/" + $("#user_code").text(), function (data) {
-        console.log(data);
-        console.log(data.login);
-    });
-});
-
 
 get_questions();
 setInterval(get_questions, 10000);
