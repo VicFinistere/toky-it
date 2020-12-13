@@ -123,7 +123,7 @@
 <script src="https://cdn.auth0.com/js/lock/11.x/lock.min.js"></script>
 <script src="/answer.js"></script>
 <script>
-    let username = ${#authentication.name}"";
+    let username = /*[[${#authentication.id}]]*/"";
     console.log(username);
 </script>
 </body>
