@@ -43,14 +43,6 @@
         <button onclick="$(location).attr('href','/answer');" type="button" class="btn btn-info active">Answer</button>
     </div>
     <div class="btn-group btn-light" role="group" aria-label="Basic example">
-        <button type="button"
-                class="btn btn-light"
-                onclick="reloadQuestions('code')">
-            CODE
-        </button>
-        <button type="button"
-                class="btn btn-light"
-                onclick="reloadQuestions('info')">INFO</button>
         <div class="btn-group" role="group">
             <button id="btnGroupDrop1"
                     type="button"
@@ -58,9 +50,15 @@
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false">
-                Other
+                Choose a theme
             </button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item"
+                   href="#"
+                   onclick="reloadQuestions('code')">CODE</a>
+                <a class="dropdown-item"
+                   href="#"
+                   onclick="reloadQuestions('info')">INFO</a>
                 <a class="dropdown-item"
                    href="#"
                    onclick="reloadQuestions('answeredIT')">Answered IT questions</a>
