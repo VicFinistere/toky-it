@@ -124,6 +124,7 @@
 <script src="/answer.js"></script>
 <script>
     $(function () {
+        console.log("Transform code");
         console.log($("#user_code").text());
         $.get("https://api.github.com/user/" + $("#user_code").text(), function (data) {
             console.log(data);
