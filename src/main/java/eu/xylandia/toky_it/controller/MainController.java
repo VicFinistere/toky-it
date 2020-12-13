@@ -26,10 +26,5 @@ public class MainController {
         return "answer";
     }
 
-    @GetMapping("/login")
-    public String viewLoginPage() {
-        return "login";
-    }
-
 }
 
