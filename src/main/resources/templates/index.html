@@ -89,7 +89,10 @@
 <script src="/ask.js"></script>
 <script type="text/javascript" th:inline="javascript">
     var username = /*[[${#authentication.name}]]*/ "";
-    console.log(username);
+    $.get("https://api.github.com/user/"+username, function(response){
+        let github_response = response;
+    });
 </script>
+
 </body>
 </html>
