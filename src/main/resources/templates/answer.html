@@ -31,7 +31,39 @@
     <div th:insert="base::pages_choice"></div>
 
     <!-- CHOOSE QUESTIONS THEMES -->
-    <div th:insert="base::theme_choice"></div>
+    <!-- Theme choices -->
+    <div th:fragment="theme_choice">
+        <div class="btn-group btn-light" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1"
+                        type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                    Choose a theme
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item"
+                       href="#"
+                       onclick="reloadQuestions('code')">CODE</a>
+                    <a class="dropdown-item"
+                       href="#"
+                       onclick="reloadQuestions('info')">INFO</a>
+                    <a class="dropdown-item"
+                       href="#"
+                       onclick="reloadQuestions('answeredIT')">Answered IT questions</a>
+                    <a class="dropdown-item"
+                       href="#"
+                       onclick="reloadQuestions('answered')">Answered non IT questions</a>
+                    <a class="dropdown-item"
+                       href="#"
+                       onclick="reloadQuestions('spam')">Not an IT question</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End theme choices -->
 
     <!-- QUESTIONS TEXTAREA -->
     <div id="questions_textarea" title="Toky IT community questions"></div>
