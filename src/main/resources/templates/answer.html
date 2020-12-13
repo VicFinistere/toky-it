@@ -99,16 +99,18 @@
     <p class="mt-5 mb-3 text-muted"
        title="This is not a brand, just the name of the project that gives a wink to Toky Woky !">
         Toky IT -
-
-        <script>
-            var dteNow = new Date();
-            var intYear = dteNow.getFullYear();
-            document.write(intYear);
-        </script>
+        <span th:text="${#dates.year(standardDate)}"></span>
     </p>
     <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
         <span th:case="${false}"><button class="btn btn-link text-info" onclick="$(location).attr('href','/login');">Login with Github</button></span>
-        <span th:case="${true}"><span id="user_code" sec:authentication="name"></span></span>
+        <span th:case="${true}">
+            <span id="user_code" sec:authentication="name"></span>
+            <script type="text/javascript" th:inline="javascript">
+                $.get("".concat("https://api.github.com/user/", [[${#authentication.name}]].toString()), function(data){
+                    $("#user_code").text(data.login)
+                });
+            </script>
+        </span>
         <span th:case="*">Should never happen, but who knows...</span>
     </div>
 </form>
@@ -122,6 +124,5 @@
 <script src="https://kit.fontawesome.com/27cdd7d8e9.js" crossorigin="anonymous"></script>
 <script src="https://cdn.auth0.com/js/lock/11.x/lock.min.js"></script>
 <script src="/answer.js"></script>
-
 </body>
 </html>
