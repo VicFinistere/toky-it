@@ -86,9 +86,7 @@
 <script src="https://kit.fontawesome.com/27cdd7d8e9.js" crossorigin="anonymous"></script>
 <script src="/ask.js"></script>
 <script>
-    let ajaxUrl = /*[[@{/api/users/{user}/menus/datatableList(user=${#authentication.id})}]]*/ "";
-    let username = /*[[@{authentication.name]]]*/"";
-    console.log(ajaxUrl);
+    let username = ${#authentication.name}"";
     console.log(username);
 </script>
 </body>

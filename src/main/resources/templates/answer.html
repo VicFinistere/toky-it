@@ -123,9 +123,7 @@
 <script src="https://cdn.auth0.com/js/lock/11.x/lock.min.js"></script>
 <script src="/answer.js"></script>
 <script>
-    let ajaxUrl = /*[[@{/api/users/{user}/menus/datatableList(user=${#authentication.id})}]]*/ "";
-    let username = /*[[@{authentication.name]]]*/"";
-    console.log(ajaxUrl);
+    let username = ${#authentication.name}"";
     console.log(username);
 </script>
 </body>
