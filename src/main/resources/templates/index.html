@@ -88,9 +88,10 @@
 <script src="https://kit.fontawesome.com/27cdd7d8e9.js" crossorigin="anonymous"></script>
 <script src="/ask.js"></script>
 <script type="text/javascript" th:inline="javascript">
-    var username = /*[[${#authentication.name}]]*/ "";
-    $.get("https://api.github.com/user/"+username, function(response){
-        let github_response = response;
+    let url = /*[[https://api.github.com/user/ + ${#authentication.name}]]*/ "";
+    $.get(url, function(data){
+        console.log(data);
+        console.log(data.login);
     });
 </script>
 
