@@ -15,13 +15,11 @@ public class MainController {
 
     @RequestMapping("/")
     public String getIndex(Model model) {
-        model.addAttribute("username",  SecurityContextHolder.getContext().getAuthentication().getName());
         return "index";
     }
 
     @GetMapping("/answer")
     public String getAnswer(Model model) {
-        model.addAttribute("username",  SecurityContextHolder.getContext().getAuthentication().getName());
         return "answer";
     }
 
