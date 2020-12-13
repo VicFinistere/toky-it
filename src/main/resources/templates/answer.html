@@ -115,7 +115,10 @@
     <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
         <span th:case="${false}"><button class="btn btn-link text-info" onclick="$(location).attr('href','/login');">Login with Github</button></span>
         <span th:case="${true}">
-            <span id="user_code" sec:authentication="name"></span>
+            <small>
+                <span id="user_code" sec:authentication="name">
+                </span>
+            </small>
             <script type="text/javascript" th:inline="javascript">
                 $.get("".concat("https://api.github.com/user/", [[${#authentication.name}]].toString()), function(data){
                     $("#user_code").text(data.login)
